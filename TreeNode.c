@@ -8,6 +8,13 @@ struct Node {
     Node *right;
 };
 
+void freeTree(Node *root);
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+
 void freeTree(Node *root) {
     if (root->left != NULL) {
         freeTree(root -> left);
@@ -18,7 +25,3 @@ void freeTree(Node *root) {
     free(root);
 }
 
-int main() {
-    printf("Hello, World!\n");
-    return 0;
-}
