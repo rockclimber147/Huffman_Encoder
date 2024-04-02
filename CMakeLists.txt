@@ -3,4 +3,4 @@ project(Huffman_Encoder C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Huffman_Encoder main.c)
+add_executable(Huffman_Encoder TreeNode.c)
