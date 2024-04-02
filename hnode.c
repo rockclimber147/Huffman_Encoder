@@ -4,7 +4,6 @@
 typedef struct Node Node;
 struct Node {
     char character;
-    int *code;
     Node *left;
     Node *right;
 };
@@ -13,21 +12,12 @@ Node *createNode();
 int height(Node *root);
 void freeTree(Node *root);
 
-int main() {
-    Node *root = createNode();
-    root->left = createNode();
-    root->right = createNode();
-    root->left->left = createNode();
-    printf("Height: %d", height(root));
-    freeTree(root);
-}
-
 Node *createNode() {
     Node *node = (Node *) malloc(sizeof(Node));
-    node->character = 127;
-    node -> code = NULL;
+    node->character = 127; // MAX value for character
     node->left = NULL;
     node->right = NULL;
+    return node;
 }
 
 int height(Node *root) {

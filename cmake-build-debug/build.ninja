@@ -49,8 +49,20 @@ cmake_ninja_workdir = C$:/Users/dayle/CLionProjects/Huffman$ Encoder/cmake-build
 
 build cmake_object_order_depends_target_Huffman_Encoder: phony || CMakeFiles/Huffman_Encoder.dir
 
-build CMakeFiles/Huffman_Encoder.dir/TreeNode.c.obj: C_COMPILER__Huffman_Encoder_unscanned_Debug C$:/Users/dayle/CLionProjects/Huffman$ Encoder/TreeNode.c || cmake_object_order_depends_target_Huffman_Encoder
-  DEP_FILE = CMakeFiles\Huffman_Encoder.dir\TreeNode.c.obj.d
+build CMakeFiles/Huffman_Encoder.dir/hnode.c.obj: C_COMPILER__Huffman_Encoder_unscanned_Debug C$:/Users/dayle/CLionProjects/Huffman$ Encoder/hnode.c || cmake_object_order_depends_target_Huffman_Encoder
+  DEP_FILE = CMakeFiles\Huffman_Encoder.dir\hnode.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Huffman_Encoder.dir
+  OBJECT_FILE_DIR = CMakeFiles\Huffman_Encoder.dir
+
+build CMakeFiles/Huffman_Encoder.dir/lookups.c.obj: C_COMPILER__Huffman_Encoder_unscanned_Debug C$:/Users/dayle/CLionProjects/Huffman$ Encoder/lookups.c || cmake_object_order_depends_target_Huffman_Encoder
+  DEP_FILE = CMakeFiles\Huffman_Encoder.dir\lookups.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Huffman_Encoder.dir
+  OBJECT_FILE_DIR = CMakeFiles\Huffman_Encoder.dir
+
+build CMakeFiles/Huffman_Encoder.dir/main.c.obj: C_COMPILER__Huffman_Encoder_unscanned_Debug C$:/Users/dayle/CLionProjects/Huffman$ Encoder/main.c || cmake_object_order_depends_target_Huffman_Encoder
+  DEP_FILE = CMakeFiles\Huffman_Encoder.dir\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Huffman_Encoder.dir
   OBJECT_FILE_DIR = CMakeFiles\Huffman_Encoder.dir
@@ -63,7 +75,7 @@ build CMakeFiles/Huffman_Encoder.dir/TreeNode.c.obj: C_COMPILER__Huffman_Encoder
 #############################################
 # Link the executable Huffman_Encoder.exe
 
-build Huffman_Encoder.exe: C_EXECUTABLE_LINKER__Huffman_Encoder_Debug CMakeFiles/Huffman_Encoder.dir/TreeNode.c.obj
+build Huffman_Encoder.exe: C_EXECUTABLE_LINKER__Huffman_Encoder_Debug CMakeFiles/Huffman_Encoder.dir/hnode.c.obj CMakeFiles/Huffman_Encoder.dir/lookups.c.obj CMakeFiles/Huffman_Encoder.dir/main.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Huffman_Encoder.dir
