@@ -7,4 +7,5 @@ add_executable(Huffman_Encoder hnode.c
         lookups.c
         main.c
         lookups.h
-        hnode.h)
+        hnode.h
+        priorityQueue.c)
