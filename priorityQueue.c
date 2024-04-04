@@ -15,10 +15,12 @@ void enqueue(QueueNode **head, QueueNode *val) {
     // If ASCII values are equal, put incoming after
 }
 
-QueueNode* dequeue(QueueNode **head) {
+QueueNode *dequeue(QueueNode **head) {
     // Returns the head and reassigns head pointer to new head
 }
 
 void freeQueue(QueueNode *head) {
     // need to call freeTree on root
 }
+
+
