@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "hnode.h"
 
 #define MAX_PRINTABLE_CHARACTERS 128
 
@@ -24,4 +25,8 @@ void printCharacterFrequencies(int *characterFrequencies) {
             printf("%c : %d\n", i, characterFrequencies[i]);
         }
     }
+}
+
+void getCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root) {
+
 }

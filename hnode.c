@@ -39,3 +39,7 @@ void freeTree(Node *root) {
     free(root);
 }
 
+int isLeaf(Node *node) {
+    return (node -> left == NULL && node -> right == NULL);
+}
+
