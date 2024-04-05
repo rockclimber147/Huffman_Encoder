@@ -1,6 +1,6 @@
-#include "hnode.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "hnode.h"
 
 typedef struct QueueNode QueueNode;
 struct QueueNode {
@@ -48,11 +48,20 @@ QueueNode enqueue(QueueNode **head, QueueNode *val) {
 }
 
 QueueNode *dequeue(QueueNode **head) {
-    // Returns the head and reassigns head pointer to new head
+    if (*head == NULL) {
+        return NULL;
+    }
+    QueueNode *temp = *head;
+    *head = (*head)->next;
+
+    return temp;
 }
 
 void freeQueue(QueueNode *head) {
-    // need to call freeTree on root
+    while (head != NULL) {
+        QueueNode *temp = head;
+        head = head->next;
+        freeTree(temp->root);
+        free(temp);
+    }
 }
-
-

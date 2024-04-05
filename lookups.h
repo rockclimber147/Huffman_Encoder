@@ -4,9 +4,15 @@
 
 #ifndef HUFFMAN_ENCODER_LOOKUPS_H
 #define HUFFMAN_ENCODER_LOOKUPS_H
+
+#include "hnode.h"
+
 #define MAX_PRINTABLE_CHARACTERS 128
 
 int* getCharacterFrequencies(const char *text);
 void printCharacterFrequencies(int *characterFrequencies);
+void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root, char *currentString, int charsNeeded);
+void getCodeWords(char **codewords, Node *root);
+void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 
 #endif //HUFFMAN_ENCODER_LOOKUPS_H

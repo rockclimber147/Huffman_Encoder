@@ -15,5 +15,5 @@ struct Node {
 Node *createNode();
 int height(Node *root);
 void freeTree(Node *root);
-
+int isLeaf(Node *node);
 #endif //HUFFMAN_ENCODER_HNODE_H
