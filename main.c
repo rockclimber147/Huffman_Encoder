@@ -4,16 +4,7 @@
 #include "hnode.h"
 
 int main() {
-    int *characterFrequencies = getCharacterFrequencies("Hell world!");
-    printCharacterFrequencies(characterFrequencies);
-
-    Node *root = createNode();
-    root->left = createNode();
-    root->left->left = createNode();
-    printf("height: %d", height(root));
-
-    freeTree(root);
-    free(characterFrequencies);
+    LOOKUP_TESTS();
     return 0;
 }
 
