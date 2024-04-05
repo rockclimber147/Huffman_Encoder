@@ -19,6 +19,7 @@ QueueNode enqueue(QueueNode **head, QueueNode *val) {
     // THis is responsible for inserting nodes IN ORDER
     if (*head == NULL) {
         *head = val;
+        return **head;
     } else {
         if ((val -> priority < (*head) -> priority) ||
         (val -> priority == (*head) -> priority && val -> root -> character <= (*head) -> root -> character)) {
@@ -32,17 +33,20 @@ QueueNode enqueue(QueueNode **head, QueueNode *val) {
     while (current -> next != NULL) {
         // if priorities are equal
         if (val -> priority == current -> next -> priority) {
-            //compare ascii, insert after current
-            if (val -> root -> character <= current -> next -> root -> character) {
+            //compare ascii, insert after current if val's ascii is less than next node's ascii
+            if (val -> root -> character < current -> next -> root -> character) {
                 insertNodeBefore(current, val);
                 return **head;
             }
         } else if (val -> priority < current -> next -> priority) {
+            // if val.priority is less than next node's priority, insert val before next node
             insertNodeBefore(current, val);
             return **head;
         }
+        // traverse to next node
         current = current -> next;
     }
+    // if current -> next == NULL, insert val to the end of the queue
     current -> next = val;
     return **head;
 }
