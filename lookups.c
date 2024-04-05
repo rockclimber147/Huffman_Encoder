@@ -1,4 +1,4 @@
-#include <malloc.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 #define MAX_PRINTABLE_CHARACTERS 128
