@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "hnode.h"
 
 typedef struct QueueNode QueueNode;
@@ -9,18 +11,24 @@ struct QueueNode {
 };
 
 void enqueue(QueueNode **head, QueueNode *val) {
-    // THis is responsible for inserting nodes IN ORDER
-    // First order by priority
-    // If priorities are equal, order by ASCII value of root node
-    // If ASCII values are equal, put incoming after
+
 }
 
 QueueNode *dequeue(QueueNode **head) {
-    // Returns the head and reassigns head pointer to new head
+    if (*head == NULL) {
+        return NULL;
+    }
+    QueueNode *temp = *head;
+    *head = (*head)->next;
+
+    return temp;
 }
 
 void freeQueue(QueueNode *head) {
-    // need to call freeTree on root
+    while (head != NULL) {
+        QueueNode *temp = head;
+        head = head->next;
+        freeTree(temp->root);
+        free(temp);
+    }
 }
-
-
