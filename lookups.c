@@ -17,7 +17,7 @@ int LOOKUP_TESTS();
 
 /**
  * Populates a table with ASCII index values and the amount of times that character was found
- * @param input file pointer to a text file
+ * @param filename The name of the file to read from
  * @return The completed character frequency table
  */
 int *getCharacterFrequenciesFromFile(char *filename) {
@@ -173,6 +173,10 @@ void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]) {
 int LOOKUP_TESTS() {
 
     int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
+    if (frequencies == NULL) {
+        return 1;
+    }
+
     printCharacterFrequencies(frequencies);
     free(frequencies);
 
@@ -210,4 +214,5 @@ int LOOKUP_TESTS() {
 
     freeTree(root);
     freeCodetable(codewords);
+    return 0;
 }
