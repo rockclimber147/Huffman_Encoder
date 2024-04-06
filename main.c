@@ -4,6 +4,7 @@
 #include "hnode.h"
 #include "priorityQueue.h"
 #include "UnitTests.h"
+#include "createTree.h"
 
 int main() {
 //    PRIORITY_QUEUE_PRINT_TEST();

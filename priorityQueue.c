@@ -83,11 +83,14 @@ QueueNode enqueue(QueueNode **head, QueueNode *val) {
     return **head;
 }
 
-QueueNode dequeue(QueueNode **head) {
+QueueNode *dequeue(QueueNode **head) {
+    if (*head == NULL) {
+        return NULL;
+    }
     QueueNode *temp = *head;
     *head = (*head)->next;
 
-    return *temp;
+    return temp;
 }
 
 void freeQueue(QueueNode *head) {
