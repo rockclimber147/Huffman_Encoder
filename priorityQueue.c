@@ -16,7 +16,7 @@ struct QueueNode {
 QueueNode *createDefaultQueueNode() {
     QueueNode *queueNode = (QueueNode *) malloc(sizeof (QueueNode));
     queueNode->root = NULL;
-    queueNode->priority=0;
+    queueNode->priority= 0;
     queueNode->next=NULL;
 
     return queueNode;
@@ -127,35 +127,8 @@ void printQueueNode(QueueNode *node) {
 void printQueue(QueueNode *head) {
     if (head) {
         printQueueNode(head);
-        printQueue(head);
+        printQueue(head->next);
     }
-}
-
-int PRIORITY_QUEUE_TEST() {
-    QueueNode *p1 = createQueueNode();
-    Node *p1root = createNode();
-    p1root->character = 'A';
-    p1->priority = 1;
-
-    QueueNode *p2 = createQueueNode();
-    Node *p2root = createNode();
-    p2root->character = 'B';
-    p2->priority = 2;
-
-    QueueNode *p3 = createQueueNode();
-    Node *p3root = createNode();
-    p3root->character = 'C';
-    p3->priority = 2;
-
-    // make queue manually
-    p1->next = p2;
-    p2->next = p3;
-
-    QueueNode *manual
-
-    printQueue(p1);
-
-    return 0;
 }
 
 int main() {

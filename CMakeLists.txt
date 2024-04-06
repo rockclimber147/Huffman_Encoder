@@ -9,4 +9,5 @@ add_executable(Huffman_Encoder hnode.c
         lookups.h
         hnode.h
         priorityQueue.c
-        priorityQueue.h)
+        priorityQueue.h
+        DaylenUnitTests.c)
