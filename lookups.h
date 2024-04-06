@@ -14,5 +14,8 @@ void printCharacterFrequencies(int *characterFrequencies);
 void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root, char *currentString, int charsNeeded);
 void getCodeWords(char **codewords, Node *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
+char **initializeCodeTable();
+void freeCodetable(char **codeTable);
+void LOOKUP_TESTS();
 
 #endif //HUFFMAN_ENCODER_LOOKUPS_H
