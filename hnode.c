@@ -12,6 +12,10 @@ Node *createNode();
 int height(Node *root);
 void freeTree(Node *root);
 
+/**
+ * Allocates and returns a default Node
+ * @return Pointer to the new Node
+ */
 Node *createNode() {
     Node *node = (Node *) malloc(sizeof(Node));
     node->character = 127; // MAX value for character
@@ -20,6 +24,11 @@ Node *createNode() {
     return node;
 }
 
+/**
+ * Recursively determines the height of the tree
+ * @param root Pointer to the root Node
+ * @return The height of the tree
+ */
 int height(Node *root) {
     if (root == NULL) {
         return -1;
@@ -29,6 +38,10 @@ int height(Node *root) {
     : height(root->right) + 1;
 }
 
+/**
+ * Recursively frees all memory allocated to nodes in a tree
+ * @param root The root of the tree
+ */
 void freeTree(Node *root) {
     if (root->left != NULL) {
         freeTree(root -> left);
@@ -39,6 +52,11 @@ void freeTree(Node *root) {
     free(root);
 }
 
+/**
+ * Returns true if the Node has no children
+ * @param node The node to check
+ * @return whether the node is a leaf or not as a boolean
+ */
 int isLeaf(Node *node) {
     return (node -> left == NULL && node -> right == NULL);
 }
