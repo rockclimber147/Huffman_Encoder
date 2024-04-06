@@ -56,7 +56,6 @@ QueueNode enqueue(QueueNode **head, QueueNode *val) {
         if ((val -> priority < (*head) -> priority) ||
         (val -> priority == (*head) -> priority && val -> root -> character <= (*head) -> root -> character)) {
             // insert before head if val.priority < head.priority OR val.priority == head.priority AND val.char.ascii <= head.char.ascii
-            printf("hereherehereherehereherehereherehereherehere");
             val -> next = (*head);
             return *val;
         }
@@ -101,6 +100,32 @@ void freeQueue(QueueNode *head) {
         freeTree(temp->root);
         free(temp);
     }
+}
+
+/**
+ * Counts the total amount of QueueNodes in a priority queue
+ * @param head The head of the queue
+ * @return the number of nodes
+ */
+int nodeCount(QueueNode *head) {
+    int count = 0;
+    if (!head) {
+        return count;
+    }
+    QueueNode *current = head;
+    while (current) {
+        count++;
+        current = current->next;
+    }
+    return count;
+}
+
+void printQueueNode(QueueNode *node) {
+    printf("(rootc: %c p: %d Mp: %d)->", node->root->character, node->priority, getPriority(node));
+}
+
+int PRIORITY_QUEUE_TEST() {
+    return 0;
 }
 
 int main() {
