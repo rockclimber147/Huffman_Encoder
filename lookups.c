@@ -14,6 +14,12 @@ char **initializeCodeTable();
 void freeCodetable(char **codeTable);
 void LOOKUP_TESTS();
 
+
+/**
+ * Populates a table with ASCII index values and the amount of times that character was found
+ * @param text The string to determine the frequencies of characters
+ * @return The completed character frequency table
+ */
 int* getCharacterFrequencies(const char *text) {
     int *characterFrequencies = malloc(sizeof(int) * MAX_PRINTABLE_CHARACTERS);
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
@@ -26,6 +32,10 @@ int* getCharacterFrequencies(const char *text) {
     return characterFrequencies;
 }
 
+/**
+ * Prints the characters and frequencies of characters that appear once or more
+ * @param characterFrequencies an array of character frequencies
+ */
 void printCharacterFrequencies(int *characterFrequencies) {
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
         if (characterFrequencies[i] != 0) {
@@ -34,6 +44,10 @@ void printCharacterFrequencies(int *characterFrequencies) {
     }
 }
 
+/**
+ * Allocates and returns an array of string pointers
+ * @return an array of string pointers
+ */
 char **initializeCodeTable() {
     char **codewords = malloc(sizeof(char*) * MAX_PRINTABLE_CHARACTERS);
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
@@ -41,7 +55,10 @@ char **initializeCodeTable() {
     }
     return codewords;
 }
-
+/**
+ * Frees the contents of the codeTable and then the table itself
+ * @param codeTable an array of string pointers, some NULL and some not
+ */
 void freeCodetable(char **codeTable) {
     // free all the pointers that were allocated to something
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
@@ -53,6 +70,13 @@ void freeCodetable(char **codeTable) {
     free(codeTable);
 }
 
+/**
+ * Recursively traverses a Huffman tree and associates codewords with ASCII indexes in the codewords array
+ * @param codewords An array of strings
+ * @param root The root of the Huffman tree
+ * @param currentString the current codeword
+ * @param charsNeeded The maximum size of a codeword string
+ */
 void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root, char *currentString, int charsNeeded) {
     // Base case, leaf has no children so write the code string to the table.
     if (isLeaf(root)) {
@@ -83,6 +107,11 @@ void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root
     }
 }
 
+/**
+ * Starts the codeword table population process
+ * @param codewords An empty codewords table
+ * @param root The root of the Huffman Tree
+ */
 void getCodeWords(char **codewords, Node *root) {
     // codewords get longer the deeper in the tree so the max characters needed is the depth + 1 for the null character
     int maxCharsNeeded = height(root) + 1;
@@ -97,6 +126,10 @@ void getCodeWords(char **codewords, Node *root) {
     }
 }
 
+/**
+ * Prints all codewords in a table with their respective characters
+ * @param codewords
+ */
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]) {
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
         if (codewords[i] != NULL) {
@@ -105,7 +138,9 @@ void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]) {
     }
 }
 
-
+/**
+ * Generates a Huffman tree, generates and prints the codeword table, and frees all allocated memory
+ */
 void LOOKUP_TESTS() {
     Node *A = createNode();
     A->character = 'A';
@@ -138,4 +173,7 @@ void LOOKUP_TESTS() {
     }
     getCodeWords(codewords, root);
     printCodeWords(codewords);
+
+    freeTree(root);
+    freeCodetable(codewords);
 }
