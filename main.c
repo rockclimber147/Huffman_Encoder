@@ -8,7 +8,8 @@
 int main() {
 //    PRIORITY_QUEUE_PRINT_TEST();
 //    LOOKUP_TESTS();
-    PRIORITY_QUEUE_TEST_ALICE();
+//    PRIORITY_QUEUE_TEST_ALICE();
+    CREATE_TREE_ALEX_TEST();
     return 0;
 }
 

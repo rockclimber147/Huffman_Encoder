@@ -7,6 +7,7 @@
 #include "lookups.h"
 #include "priorityQueue.h"
 #include "hnode.h"
+#include "createTree.h"
 
 int PRIORITY_QUEUE_PRINT_TEST() {
     QueueNode *p1 = createDefaultQueueNode();
@@ -140,5 +141,19 @@ int PRIORITY_QUEUE_TEST_ALICE() {
     printQueueNode(head);
     printf("%c", head->root->character);
 
+    return 0;
+}
+
+int CREATE_TREE_ALEX_TEST() {
+    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
+    if (frequencies == NULL) {
+        return 1;
+    }
+
+    printCharacterFrequencies(frequencies);
+
+    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
+    printQueueNode(priorityQueue);
+    free(frequencies);
     return 0;
 }
