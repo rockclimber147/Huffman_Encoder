@@ -120,13 +120,22 @@ int nodeCount(QueueNode *head) {
     return count;
 }
 
+/**
+ * Prints the queueNode data in the format (rootCharacter priority modified priority)->
+ * @param node The node to print
+ */
 void printQueueNode(QueueNode *node) {
     printf("(c:%c p:%d Mp:%d)->", node->root->character, node->priority, getPriority(node));
 }
 
+/**
+ * Recursively prints a priorityQueue
+ * @param head The head of a priority queue
+ */
 void printQueue(QueueNode *head) {
     if (head) {
         printQueueNode(head);
         printQueue(head->next);
     }
+    printf("\n");
 }
