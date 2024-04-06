@@ -14,6 +14,23 @@ char **initializeCodeTable();
 void freeCodetable(char **codeTable);
 void LOOKUP_TESTS();
 
+/**
+ * Populates a table with ASCII index values and the amount of times that character was found
+ * @param input file pointer to a text file
+ * @return The completed character frequency table
+ */
+int* getCharacterFrequenciesFromFile(FILE *input) {
+    int *characterFrequencies = malloc(sizeof(int) * MAX_PRINTABLE_CHARACTERS);
+    for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
+        characterFrequencies[i] = 0;
+    }
+    char currentChar;
+    do {
+        currentChar = fgetc(input);
+        characterFrequencies[currentChar]++;
+    } while (currentChar != '\0');
+    return characterFrequencies;
+}
 
 /**
  * Populates a table with ASCII index values and the amount of times that character was found
