@@ -1,3 +1,3 @@
-C:/Users/dayle/CLionProjects/Huffman Encoder/cmake-build-debug/CMakeFiles/Huffman_Encoder.dir
-C:/Users/dayle/CLionProjects/Huffman Encoder/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/dayle/CLionProjects/Huffman Encoder/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/alexp/Desktop/BCIT Spring 2024/C project/Huffman_Encoder/cmake-build-debug/CMakeFiles/Huffman_Encoder.dir
+C:/Users/alexp/Desktop/BCIT Spring 2024/C project/Huffman_Encoder/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/alexp/Desktop/BCIT Spring 2024/C project/Huffman_Encoder/cmake-build-debug/CMakeFiles/rebuild_cache.dir

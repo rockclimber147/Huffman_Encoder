@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/dayle/CLionProjects/Huffman Encoder
+# Install script for directory: C:/Users/alexp/Desktop/BCIT Spring 2024/C project/Huffman_Encoder
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/dayle/CLionProjects/Huffman Encoder/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/alexp/Desktop/BCIT Spring 2024/C project/Huffman_Encoder/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
