@@ -12,6 +12,7 @@ void getCodeWords(char **codewords, Node *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 char **initializeCodeTable();
 void freeCodetable(char **codeTable);
+int* getCharacterFrequenciesFromFile(FILE *input);
 void LOOKUP_TESTS();
 
 /**
@@ -19,7 +20,7 @@ void LOOKUP_TESTS();
  * @param input file pointer to a text file
  * @return The completed character frequency table
  */
-int* getCharacterFrequenciesFromFile(FILE *input) {
+int *getCharacterFrequenciesFromFile(FILE *input) {
     int *characterFrequencies = malloc(sizeof(int) * MAX_PRINTABLE_CHARACTERS);
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
         characterFrequencies[i] = 0;
