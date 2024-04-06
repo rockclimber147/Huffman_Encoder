@@ -125,10 +125,6 @@ void printQueueNode(QueueNode *node) {
 }
 
 int PRIORITY_QUEUE_TEST() {
-    return 0;
-}
-
-int main() {
     Node *A = createNode();
     A->character = 'A';
     Node *B = createNode();
@@ -154,13 +150,14 @@ int main() {
 //    printf("here");
     *head = enqueue(&Bqn, Aqn);
     *head = enqueue(&head, Cqn);
-    *head = enqueue(&head, AAqn);
+//    *head = enqueue(&head, AAqn);
 
     while (head->next != NULL) {
+        printQueueNode(head);
         printf("%c", head->root->character);
         head = head->next;
     }
+    printQueueNode(head);
     printf("%c", head->root->character);
-
     return 0;
 }
