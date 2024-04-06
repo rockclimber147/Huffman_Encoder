@@ -114,18 +114,33 @@ int PRIORITY_QUEUE_TEST_ALICE() {
     QueueNode *Eqn = createQueueNode(E, 5);
 
     QueueNode *head = createDefaultQueueNode();
-//    printf("here");
     *head = enqueue(&Bqn, Aqn);
+    *head = enqueue(&head, Dqn);
     *head = enqueue(&head, Cqn);
 //    *head = enqueue(&head, AAqn);
+//    *head = dequeue(&head);
+
+//    while (head != NULL) {
+//        printQueueNode(head);
+//        *head = dequeue(&head);
+//    }
 
     while (head->next != NULL) {
         printQueueNode(head);
         printf("%c", head->root->character);
-        head = head->next;
+//        head = head->next;
+        *head = dequeue(&head);
+
     }
+    printf("\n-------\n");
+    QueueNode *test = createDefaultQueueNode();
+    *test = dequeue(&head);
+    printQueueNode(test);
+    printf("%c", test->root->character);
+    printf("\n-------\n");
     printQueueNode(head);
     printf("%c", head->root->character);
+
     return 0;
 }
 
