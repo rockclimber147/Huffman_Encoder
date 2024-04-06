@@ -9,6 +9,29 @@ struct QueueNode {
     struct QueueNode *next;
 };
 
+/**
+ * Allocates and initializes a default QueueNode
+ * @return pointer to new QueueNode
+ */
+QueueNode *createQueueNode() {
+    QueueNode *node = (QueueNode *) malloc(sizeof (QueueNode));
+    node->root = NULL;
+    node->priority=0;
+    node->next=NULL;
+
+    return node;
+}
+
+
+/**
+ * Returns the absolute priority of a QueueNode
+ * @param node The QueueNode to get the priority of
+ * @return The priority of the QueueNode
+ */
+int getPriority(QueueNode *node) {
+    return node->priority * 1000 + node->root->character;
+}
+
 void insertNodeBefore(QueueNode *current, QueueNode *val) {
     QueueNode *temp = current -> next;
     current -> next = val;

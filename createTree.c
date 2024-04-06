@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "hnode.h"
 #include "priorityQueue.h"
+#include "lookups.h"
 
 Node* createHuffmanTree(QueueNode** head) {
     while (*head != NULL && (*head)->next->next != NULL) {
@@ -36,4 +37,17 @@ Node* createHuffmanTree(QueueNode** head) {
     }
 
     return NULL; // If the queue is empty
+}
+
+/**
+ * Generates a priority queue from all nonzero characters and their frequencies in the input table
+ * @return a pointer to a priority queue
+ */
+QueueNode *generatePriorityQueue(int *frequencyTable) {
+    for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
+        if (frequencyTable[i] != 0) {
+            Node *root = createNode();
+            root->character = i;
+        }
+    }
 }
