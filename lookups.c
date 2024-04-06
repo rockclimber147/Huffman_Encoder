@@ -172,7 +172,7 @@ void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]) {
  */
 int LOOKUP_TESTS() {
 
-    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
+    int* frequencies = getCharacterFrequenciesFromFile("TestFiles/LookupTest.txt");
     if (frequencies == NULL) {
         return 1;
     }
