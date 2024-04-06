@@ -55,7 +55,7 @@ QueueNode enqueue(QueueNode **head, QueueNode *val) {
     } else {
         if ((val -> priority < (*head) -> priority) ||
         (val -> priority == (*head) -> priority && val -> root -> character < (*head) -> root -> character)) {
-            // insert before head if val.priority < head.priority OR val.priority == head.priority AND val.char.ascii <= head.char.ascii
+            // insert before head if val.priority < head.priority OR val.priority == head.priority AND val.char.ascii < head.char.ascii
             val -> next = (*head);
             return *val;
         }
