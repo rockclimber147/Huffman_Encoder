@@ -21,4 +21,5 @@ void freeQueue(QueueNode *head);
 void printQueueNode(QueueNode *node);
 void printQueue(QueueNode *head);
 int PRIORITY_QUEUE_PRINT_TEST();
+int PRIORITY_QUEUE_TEST_ALICE();
 #endif //HUFFMAN_ENCODER_PRIORITYQUEUE_H

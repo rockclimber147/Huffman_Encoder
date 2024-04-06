@@ -88,3 +88,41 @@ int LOOKUP_TESTS() {
     freeCodetable(codewords);
     return 0;
 }
+
+int PRIORITY_QUEUE_TEST_ALICE() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    B->character = 'B';
+    Node *C = createNode();
+    C->character = 'C';
+    Node *D = createNode();
+    D->character = 'D';
+    Node *E = createNode();
+    E->character = 'E';
+
+    Node *AA = createNode();
+    AA->character = 'A';
+
+    QueueNode *Aqn = createQueueNode(A, 1);
+    QueueNode *AAqn = createQueueNode(AA, 1);
+    QueueNode *Bqn = createQueueNode(B, 2);
+    QueueNode *Cqn = createQueueNode(C, 1);
+    QueueNode *Dqn = createQueueNode(D, 4);
+    QueueNode *Eqn = createQueueNode(E, 5);
+
+    QueueNode *head = createDefaultQueueNode();
+//    printf("here");
+    *head = enqueue(&Bqn, Aqn);
+    *head = enqueue(&head, Cqn);
+//    *head = enqueue(&head, AAqn);
+
+    while (head->next != NULL) {
+        printQueueNode(head);
+        printf("%c", head->root->character);
+        head = head->next;
+    }
+    printQueueNode(head);
+    printf("%c", head->root->character);
+    return 0;
+}
