@@ -53,9 +53,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
             newRoot->character = i;
 
             // Creating a new queue node
-            QueueNode *newQueueNode = createQueueNode();
-            newQueueNode->root = newRoot;
-            newQueueNode->priority = frequencyTable[i];
+            QueueNode *newQueueNode = createQueueNode(newRoot, frequencyTable[i]);
 
             // Enqueue the new node into the priority queue
             if (newPriorityQueue == NULL) {
