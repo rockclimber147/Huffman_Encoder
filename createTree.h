@@ -8,5 +8,6 @@
 #include "priorityQueue.h"
 
 Node* createHuffmanTree(QueueNode** head);
+QueueNode *generatePriorityQueue(int *frequencyTable);
 
 #endif //HUFFMAN_ENCODER_CREATETREE_H
