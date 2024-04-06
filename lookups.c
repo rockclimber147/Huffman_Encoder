@@ -12,8 +12,37 @@ void getCodeWords(char **codewords, Node *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 char **initializeCodeTable();
 void freeCodetable(char **codeTable);
-void LOOKUP_TESTS();
+int* getCharacterFrequenciesFromFile(char *filename);
+int LOOKUP_TESTS();
 
+/**
+ * Populates a table with ASCII index values and the amount of times that character was found
+ * @param filename The name of the file to read from
+ * @return The completed character frequency table
+ */
+int *getCharacterFrequenciesFromFile(char *filename) {
+    FILE *input;
+
+    input = fopen("LookupTest.txt", "r");
+
+    if (input == NULL){
+        printf("Couldn't open file");
+        return NULL;
+    }
+
+    int *characterFrequencies = malloc(sizeof(int) * MAX_PRINTABLE_CHARACTERS);
+    for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
+        characterFrequencies[i] = 0;
+    }
+    char currentChar;
+    do {
+        currentChar = fgetc(input);
+        characterFrequencies[currentChar]++;
+    } while (currentChar != EOF);
+
+    fclose(input);
+    return characterFrequencies;
+}
 
 /**
  * Populates a table with ASCII index values and the amount of times that character was found
@@ -141,7 +170,16 @@ void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]) {
 /**
  * Generates a Huffman tree, generates and prints the codeword table, and frees all allocated memory
  */
-void LOOKUP_TESTS() {
+int LOOKUP_TESTS() {
+
+    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
+    if (frequencies == NULL) {
+        return 1;
+    }
+
+    printCharacterFrequencies(frequencies);
+    free(frequencies);
+
     Node *A = createNode();
     A->character = 'A';
     Node *B = createNode();
@@ -176,4 +214,5 @@ void LOOKUP_TESTS() {
 
     freeTree(root);
     freeCodetable(codewords);
+    return 0;
 }
