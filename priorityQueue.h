@@ -13,7 +13,7 @@ struct QueueNode {
     struct QueueNode *prev;
 };
 QueueNode *createQueueNode();
-void enqueue(QueueNode **head, QueueNode *val);
+QueueNode enqueue(QueueNode **head, QueueNode *val);
 QueueNode* dequeue(QueueNode **head);
 void freeQueue(QueueNode *head);
 #endif //HUFFMAN_ENCODER_PRIORITYQUEUE_H

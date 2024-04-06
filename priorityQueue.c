@@ -13,13 +13,22 @@ struct QueueNode {
  * Allocates and initializes a default QueueNode
  * @return pointer to new QueueNode
  */
-QueueNode *createQueueNode() {
-    QueueNode *node = (QueueNode *) malloc(sizeof (QueueNode));
-    node->root = NULL;
-    node->priority=0;
-    node->next=NULL;
+QueueNode *createDefaultQueueNode() {
+    QueueNode *queueNode = (QueueNode *) malloc(sizeof (QueueNode));
+    queueNode->root = NULL;
+    queueNode->priority=0;
+    queueNode->next=NULL;
 
-    return node;
+    return queueNode;
+}
+
+QueueNode *createQueueNode(Node *node, int priority) {
+    QueueNode *queueNode = (QueueNode *) malloc(sizeof (QueueNode));
+    queueNode->root = node;
+    queueNode->priority=priority;
+    queueNode->next=NULL;
+
+    return queueNode;
 }
 
 
@@ -145,6 +154,43 @@ int PRIORITY_QUEUE_TEST() {
     QueueNode *manual
 
     printQueue(p1);
+
+    return 0;
+}
+
+int main() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    B->character = 'B';
+    Node *C = createNode();
+    C->character = 'C';
+    Node *D = createNode();
+    D->character = 'D';
+    Node *E = createNode();
+    E->character = 'E';
+
+    Node *AA = createNode();
+    AA->character = 'A';
+
+    QueueNode *Aqn = createQueueNode(A, 1);
+    QueueNode *AAqn = createQueueNode(AA, 1);
+    QueueNode *Bqn = createQueueNode(B, 2);
+    QueueNode *Cqn = createQueueNode(C, 3);
+    QueueNode *Dqn = createQueueNode(D, 4);
+    QueueNode *Eqn = createQueueNode(E, 5);
+
+    QueueNode *head = createDefaultQueueNode();
+//    printf("here");
+    *head = enqueue(&Bqn, Aqn);
+    *head = enqueue(&head, Cqn);
+    *head = enqueue(&head, AAqn);
+
+    while (head->next != NULL) {
+        printf("%c", head->root->character);
+        head = head->next;
+    }
+    printf("%c", head->root->character);
 
     return 0;
 }

@@ -44,10 +44,26 @@ Node* createHuffmanTree(QueueNode** head) {
  * @return a pointer to a priority queue
  */
 QueueNode *generatePriorityQueue(int *frequencyTable) {
+    QueueNode *newPriorityQueue = NULL;
+
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
         if (frequencyTable[i] != 0) {
-            Node *root = createNode();
-            root->character = i;
+            // Creating a new tree node for the character
+            Node *newRoot = createNode();
+            newRoot->character = i;
+
+            // Creating a new queue node
+            QueueNode *newQueueNode = createQueueNode();
+            newQueueNode->root = newRoot;
+            newQueueNode->priority = frequencyTable[i];
+
+            // Enqueue the new node into the priority queue
+            if (newPriorityQueue == NULL) {
+                newPriorityQueue = newQueueNode; // set newQueueNode as head if empty priority queue
+            } else {
+                *newPriorityQueue = enqueue(&newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
+            }
         }
     }
+    return newPriorityQueue;
 }
