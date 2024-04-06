@@ -121,7 +121,7 @@ int nodeCount(QueueNode *head) {
 }
 
 void printQueueNode(QueueNode *node) {
-    printf("(rootc: %c p: %d Mp: %d)->", node->root->character, node->priority, getPriority(node));
+    printf("(c:%c p:%d Mp:%d)->", node->root->character, node->priority, getPriority(node));
 }
 
 void printQueue(QueueNode *head) {
