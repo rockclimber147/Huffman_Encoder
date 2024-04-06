@@ -92,3 +92,29 @@ void freeQueue(QueueNode *head) {
         free(temp);
     }
 }
+
+/**
+ * Counts the total amount of QueueNodes in a priority queue
+ * @param head The head of the queue
+ * @return the number of nodes
+ */
+int nodeCount(QueueNode *head) {
+    int count = 0;
+    if (!head) {
+        return count;
+    }
+    QueueNode *current = head;
+    while (current) {
+        count++;
+        current = current->next;
+    }
+    return count;
+}
+
+void printQueueNode(QueueNode *node) {
+    printf("(rootc: %c p: %d Mp: %d)->", node->root->character, node->priority, getPriority(node));
+}
+
+int PRIORITY_QUEUE_TEST() {
+    return 0;
+}
