@@ -34,6 +34,7 @@ int PRIORITY_QUEUE_PRINT_TEST() {
     QueueNode *manual = p1;
 
     printQueue(p1);
+    printf("\n");
     freeQueue(manual);
 
     return 0;
@@ -44,7 +45,7 @@ int PRIORITY_QUEUE_PRINT_TEST() {
  */
 int LOOKUP_TESTS() {
 
-    int* frequencies = getCharacterFrequenciesFromFile("TestFiles/LookupTest.txt");
+    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
     if (frequencies == NULL) {
         return 1;
     }
