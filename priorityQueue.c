@@ -115,6 +115,36 @@ void printQueueNode(QueueNode *node) {
     printf("(rootc: %c p: %d Mp: %d)->", node->root->character, node->priority, getPriority(node));
 }
 
+void printQueue(QueueNode *head) {
+    if (head) {
+        printQueueNode(head);
+        printQueue(head);
+    }
+}
+
 int PRIORITY_QUEUE_TEST() {
+    QueueNode *p1 = createQueueNode();
+    Node *p1root = createNode();
+    p1root->character = 'A';
+    p1->priority = 1;
+
+    QueueNode *p2 = createQueueNode();
+    Node *p2root = createNode();
+    p2root->character = 'B';
+    p2->priority = 2;
+
+    QueueNode *p3 = createQueueNode();
+    Node *p3root = createNode();
+    p3root->character = 'C';
+    p3->priority = 2;
+
+    // make queue manually
+    p1->next = p2;
+    p2->next = p3;
+
+    QueueNode *manual
+
+    printQueue(p1);
+
     return 0;
 }
