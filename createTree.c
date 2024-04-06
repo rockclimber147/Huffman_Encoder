@@ -16,7 +16,6 @@ Node* createHuffmanTree(QueueNode** head) {
         Node* newNode = createNode();
         newNode->left = node1->root;
         newNode->right = node2->root;
-        newNode->character = '\0'; // Internal node doesn't represent any character
 
         // Enqueue the new node back into the priority queue
         QueueNode* newQueueNode = (QueueNode*)malloc(sizeof(QueueNode));
