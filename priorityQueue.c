@@ -9,6 +9,15 @@ struct QueueNode {
     struct QueueNode *next;
 };
 
+/**
+ * Returns the absolute priority of a QueueNode
+ * @param node The QueueNode to get the priority of
+ * @return The priority of the QueueNode
+ */
+int getPriority(QueueNode *node) {
+    return node->priority * 1000 + node->root->character;
+}
+
 void insertNodeBefore(QueueNode *current, QueueNode *val) {
     QueueNode *temp = current -> next;
     current -> next = val;

@@ -37,3 +37,5 @@ Node* createHuffmanTree(QueueNode** head) {
 
     return NULL; // If the queue is empty
 }
+
+
