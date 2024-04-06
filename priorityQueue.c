@@ -131,32 +131,32 @@ void printQueue(QueueNode *head) {
     }
 }
 
-int PRIORITY_QUEUE_TEST() {
-    QueueNode *p1 = createQueueNode();
-    Node *p1root = createNode();
-    p1root->character = 'A';
-    p1->priority = 1;
-
-    QueueNode *p2 = createQueueNode();
-    Node *p2root = createNode();
-    p2root->character = 'B';
-    p2->priority = 2;
-
-    QueueNode *p3 = createQueueNode();
-    Node *p3root = createNode();
-    p3root->character = 'C';
-    p3->priority = 2;
-
-    // make queue manually
-    p1->next = p2;
-    p2->next = p3;
-
-    QueueNode *manual
-
-    printQueue(p1);
-
-    return 0;
-}
+//int PRIORITY_QUEUE_TEST() {
+//    QueueNode *p1 = createQueueNode();
+//    Node *p1root = createNode();
+//    p1root->character = 'A';
+//    p1->priority = 1;
+//
+//    QueueNode *p2 = createQueueNode();
+//    Node *p2root = createNode();
+//    p2root->character = 'B';
+//    p2->priority = 2;
+//
+//    QueueNode *p3 = createQueueNode();
+//    Node *p3root = createNode();
+//    p3root->character = 'C';
+//    p3->priority = 2;
+//
+//    // make queue manually
+//    p1->next = p2;
+//    p2->next = p3;
+//
+//    QueueNode *manual
+//
+//    printQueue(p1);
+//
+//    return 0;
+//}
 
 
 int PRIORITY_QUEUE_TEST_ALICE() {
@@ -177,7 +177,7 @@ int PRIORITY_QUEUE_TEST_ALICE() {
     QueueNode *Aqn = createQueueNode(A, 1);
     QueueNode *AAqn = createQueueNode(AA, 1);
     QueueNode *Bqn = createQueueNode(B, 2);
-    QueueNode *Cqn = createQueueNode(C, 3);
+    QueueNode *Cqn = createQueueNode(C, 1);
     QueueNode *Dqn = createQueueNode(D, 4);
     QueueNode *Eqn = createQueueNode(E, 5);
 
