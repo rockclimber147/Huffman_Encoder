@@ -10,6 +10,20 @@ struct QueueNode {
 };
 
 /**
+ * Allocates and initializes a default QueueNode
+ * @return pointer to new QueueNode
+ */
+QueueNode *createQueueNode() {
+    QueueNode *node = (QueueNode *) malloc(sizeof (QueueNode));
+    node->root = NULL;
+    node->priority=0;
+    node->next=NULL;
+
+    return node;
+}
+
+
+/**
  * Returns the absolute priority of a QueueNode
  * @param node The QueueNode to get the priority of
  * @return The priority of the QueueNode

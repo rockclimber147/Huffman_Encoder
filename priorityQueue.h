@@ -12,7 +12,7 @@ struct QueueNode {
     struct QueueNode *next;
     struct QueueNode *prev;
 };
-
+QueueNode *createQueueNode();
 void enqueue(QueueNode **head, QueueNode *val);
 QueueNode* dequeue(QueueNode **head);
 void freeQueue(QueueNode *head);
