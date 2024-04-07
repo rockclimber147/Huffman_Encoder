@@ -31,6 +31,14 @@ Node * getHuffmanTreeFromFile (char *filename) {
     return huffmanTree;
 }
 
+char **getCodeTableFromTree(Node *root) {
+    char **codeTable = initializeCodeTable();
+    getCodeWords(codeTable, root);
+    printf("The codewords are:\n");
+    printCodeWords(codeTable);
+    return codeTable;
+}
+
 int main() {
 //    PRIORITY_QUEUE_PRINT_TEST();
 //    LOOKUP_TESTS();
@@ -38,6 +46,7 @@ int main() {
 //    CREATE_TREE_ALEX_TEST();
 //    TEST_freeTree();
     Node *root = getHuffmanTreeFromFile("LookupTest.txt");
+    char **codeTable = getCodeTableFromTree(root);
 
     return 0;
 }
