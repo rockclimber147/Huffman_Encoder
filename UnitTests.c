@@ -189,3 +189,32 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
     }
     return newPriorityQueue;
 }
+
+void TEST_freeTree() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    A->character = 'B';
+    Node *C = createNode();
+    A->character = 'C';
+    A->right = B;
+    B->right = C;
+    freeTree(A);
+}
+
+void TEST_printTree(){
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    B->character = 'B';
+    Node *C = createNode();
+    C->character = 'C';
+    A->right = B;
+    B->right = C;
+    printTree(A);
+    printf("\n");
+    printTree(B);
+    printf("\n");
+    printTree(C);
+    freeTree(A);
+}

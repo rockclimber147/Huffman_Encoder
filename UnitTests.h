@@ -10,4 +10,6 @@
 int PRIORITY_QUEUE_PRINT_TEST();
 int LOOKUP_TESTS();
 int CREATE_TREE_ALEX_TEST();
+void TEST_freeTree();
+void TEST_printTree();
 #endif //HUFFMAN_ENCODER_UNITTESTS_H
