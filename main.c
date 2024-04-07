@@ -45,9 +45,9 @@ int main() {
 //    PRIORITY_QUEUE_TEST_ALICE();
 //    CREATE_TREE_ALEX_TEST();
 //    TEST_freeTree();
-    TEST_printTree();
-//    Node *root = getHuffmanTreeFromFile("LookupTest.txt");
-//    char **codeTable = getCodeTableFromTree(root);
+//    TEST_printTree();
+    Node *root = getHuffmanTreeFromFile("LookupTest.txt");
+    char **codeTable = getCodeTableFromTree(root);
 
     return 0;
 }

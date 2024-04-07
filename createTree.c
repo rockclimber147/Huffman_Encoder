@@ -7,7 +7,7 @@
 #include "lookups.h"
 
 Node* createHuffmanTree(QueueNode** head) {
-    while (*head != NULL && (*head)->next->next != NULL) {
+    while (nodeCount(*head) > 1) {
         // Dequeue two nodes with the lowest frequencies
         QueueNode* node1 = dequeue(head);
         QueueNode* node2 = dequeue(head);

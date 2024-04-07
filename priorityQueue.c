@@ -132,7 +132,9 @@ int nodeCount(QueueNode *head) {
  * @param node The node to print
  */
 void printQueueNode(QueueNode *node) {
-    printf("(c:%c p:%d Mp:%d)->", node->root->character, node->priority, getPriority(node));
+    printf("(");
+    printTree(node->root);
+    printf(" p:%d Mp:%d)->", node->priority, getPriority(node));
 }
 
 /**
