@@ -48,40 +48,40 @@ void insertNodeBefore(QueueNode *current, QueueNode *val) {
     val -> next = temp;
 }
 
-QueueNode enqueue(QueueNode **head, QueueNode *val) {
-    // THis is responsible for inserting nodes IN ORDER
-    if (*head == NULL) {
-        *head = val;
-        return **head;
+QueueNode* enqueue(QueueNode *head, QueueNode *val) {
+    // This is responsible for inserting nodes IN ORDER
+    if (head == NULL) {
+        head = val;
+        return head;
     } else {
-        if ((val -> priority < (*head) -> priority) ||
-        (val -> priority == (*head) -> priority && val -> root -> character < (*head) -> root -> character)) {
+        if ((val -> priority < head->priority) ||
+        (val -> priority == head-> priority && val -> root -> character < head -> root -> character)) {
             // insert before head if val.priority < head.priority OR val.priority == head.priority AND val.char.ascii < head.char.ascii
-            val -> next = (*head);
-            return *val;
+            val -> next = head;
+            return val;
         }
     }
 
-    QueueNode *current = *head;
+    QueueNode *current = head;
     while (current -> next != NULL) {
         // if priorities are equal
         if (val -> priority == current -> next -> priority) {
             //compare ascii, insert after current if val's ascii is less than next node's ascii
             if (val -> root -> character < current -> next -> root -> character) {
                 insertNodeBefore(current, val);
-                return **head;
+                return head;
             }
         } else if (val -> priority < current -> next -> priority) {
             // if val.priority is less than next node's priority, insert val before next node
             insertNodeBefore(current, val);
-            return **head;
+            return head;
         }
         // traverse to next node
         current = current -> next;
     }
     // if current -> next == NULL, insert val to the end of the queue
     current -> next = val;
-    return **head;
+    return head;
 }
 
 //QueueNode dequeue(QueueNode **head) {
@@ -153,7 +153,7 @@ void printQueue(QueueNode *head) {
     printf("\n");
 }
 
-////////////////////////////////// THE FOLLOWING IS FOR TESTING:
+////////////////////////////////// THE FOLLOWING IS FOR TESTING ALEX'S CODE:
 
 Node* createHuffmanTree(QueueNode** head) {
     while (*head != NULL && (*head)->next->next != NULL) {
@@ -207,7 +207,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
             if (newPriorityQueue == NULL) {
                 newPriorityQueue = newQueueNode; // set newQueueNode as head if empty priority queue
             } else {
-                *newPriorityQueue = enqueue(&newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
+                newPriorityQueue = enqueue(newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
             }
         }
     }

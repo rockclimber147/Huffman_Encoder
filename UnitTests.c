@@ -91,69 +91,40 @@ int LOOKUP_TESTS() {
     return 0;
 }
 
-//int PRIORITY_QUEUE_TEST_ALICE() {
-//    Node *A = createNode();
-//    A->character = 'A';
-//    Node *B = createNode();
-//    B->character = 'B';
-//    Node *C = createNode();
-//    C->character = 'C';
-//    Node *D = createNode();
-//    D->character = 'D';
-//    Node *E = createNode();
-//    E->character = 'E';
-//
-//    Node *AA = createNode();
-//    AA->character = 'A';
-//
-//    QueueNode *Aqn = createQueueNode(A, 1);
-//    QueueNode *AAqn = createQueueNode(AA, 1);
-//    QueueNode *Bqn = createQueueNode(B, 2);
-//    QueueNode *Cqn = createQueueNode(C, 1);
-//    QueueNode *Dqn = createQueueNode(D, 4);
-//    QueueNode *Eqn = createQueueNode(E, 5);
-//
-//    QueueNode *head = createDefaultQueueNode();
-//    *head = enqueue(&Bqn, Aqn);
-//    *head = enqueue(&head, Dqn);
-//    *head = enqueue(&head, Cqn);
-////    *head = enqueue(&head, AAqn);
-////    *head = dequeue(&head);
-//
-////    while (head != NULL) {
-////        printQueueNode(head);
-////        *head = dequeue(&head);
-////    }
-//
-//    while (head->next != NULL) {
-//        printQueueNode(head);
-//        printf("%c", head->root->character);
-////        head = head->next;
-//        *head = dequeue(&head);
-//
-//    }
-//    printf("\n-------\n");
-//    QueueNode *test = createDefaultQueueNode();
-//    *test = dequeue(&head);
-//    printQueueNode(test);
-//    printf("%c", test->root->character);
-//    printf("\n-------\n");
-//    printQueueNode(head);
-//    printf("%c", head->root->character);
-//
-//    return 0;
-//}
+int PRIORITY_QUEUE_TEST_ALICE() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    B->character = 'B';
+    Node *C = createNode();
+    C->character = 'C';
 
-//int CREATE_TREE_ALEX_TEST() {
-//    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
-//    if (frequencies == NULL) {
-//        return 1;
-//    }
-//
-//    printCharacterFrequencies(frequencies);
-//
-//    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
-//    printQueueNode(priorityQueue);
-//    free(frequencies);
-//    return 0;
-//}
+    QueueNode *Aqn = createQueueNode(A, 3);
+    QueueNode *Bqn = createQueueNode(B, 2);
+    QueueNode *Cqn = createQueueNode(C, 1);
+
+    QueueNode *head = enqueue(Bqn, Aqn);
+    head = enqueue(head, Cqn);
+
+    while (head->next != NULL) {
+        printf("%c ->", head->root->character);
+        head = head->next;
+    }
+    printf("%c ->", head->root->character);
+
+    return 0;
+}
+
+int CREATE_TREE_ALEX_TEST() {
+    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
+    if (frequencies == NULL) {
+        return 1;
+    }
+
+    printCharacterFrequencies(frequencies);
+
+    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
+    printQueueNode(priorityQueue);
+    free(frequencies);
+    return 0;
+}

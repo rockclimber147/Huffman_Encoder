@@ -14,7 +14,7 @@ struct QueueNode {
 };
 QueueNode *createQueueNode(Node *node, int priority);
 QueueNode *createDefaultQueueNode();
-QueueNode enqueue(QueueNode **head, QueueNode *val);
+QueueNode * enqueue(QueueNode *head, QueueNode *val);
 QueueNode * dequeue(QueueNode **head);
 int nodeCount(QueueNode *head);
 void freeQueue(QueueNode *head);

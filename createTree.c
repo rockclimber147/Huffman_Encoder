@@ -58,7 +58,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
             if (newPriorityQueue == NULL) {
                 newPriorityQueue = newQueueNode; // set newQueueNode as head if empty priority queue
             } else {
-                *newPriorityQueue = enqueue(&newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
+                newPriorityQueue = enqueue(newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
             }
         }
     }
