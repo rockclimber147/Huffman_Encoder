@@ -165,7 +165,7 @@ Node* createHuffmanTree(QueueNode** head) {
         newQueueNode->root = newNode;
         newQueueNode->priority = node1->priority + node2->priority;
         newQueueNode->next = NULL;
-        enqueue(head, newQueueNode);
+        enqueue(*head, newQueueNode);
 
         // Free memory for the dequeued nodes
         freeQueue(node1);
