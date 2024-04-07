@@ -36,7 +36,7 @@ int main() {
 //    LOOKUP_TESTS();
 //    PRIORITY_QUEUE_TEST_ALICE();
 //    CREATE_TREE_ALEX_TEST();
-
+//    TEST_freeTree();
     Node *root = getHuffmanTreeFromFile("LookupTest.txt");
 
     return 0;

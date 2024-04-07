@@ -61,3 +61,15 @@ int isLeaf(Node *node) {
     return (node -> left == NULL && node -> right == NULL);
 }
 
+
+void TEST_freeTree() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    A->character = 'B';
+    Node *C = createNode();
+    A->character = 'C';
+    A->right = B;
+    B->right = C;
+    freeTree(A);
+}

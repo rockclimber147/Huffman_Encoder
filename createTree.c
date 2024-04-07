@@ -49,7 +49,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
         if (frequencyTable[i] != 0) {
             // Creating a new tree node for the character
             Node *newRoot = createNode();
-            newRoot->character = i;
+            newRoot->character = (char) i;
 
             // Creating a new queue node
             QueueNode *newQueueNode = createQueueNode(newRoot, frequencyTable[i]);
