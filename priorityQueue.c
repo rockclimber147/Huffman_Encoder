@@ -214,16 +214,16 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
     return newPriorityQueue;
 }
 
-int main() {
-    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
-    if (frequencies == NULL) {
-        return 1;
-    }
-
-    printCharacterFrequencies(frequencies);
-
-    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
-    printQueueNode(priorityQueue);
-    free(frequencies);
-    return 0;
-}
+//int main() {
+//    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
+//    if (frequencies == NULL) {
+//        return 1;
+//    }
+//
+//    printCharacterFrequencies(frequencies);
+//
+//    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
+//    printQueueNode(priorityQueue);
+//    free(frequencies);
+//    return 0;
+//}
