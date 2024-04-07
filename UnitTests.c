@@ -124,7 +124,7 @@ int CREATE_TREE_ALEX_TEST() {
     printCharacterFrequencies(frequencies);
 
     QueueNode *priorityQueue = generatePriorityQueue(frequencies);
-    printQueueNode(priorityQueue);
+    printQueue(priorityQueue);
     free(frequencies);
     return 0;
 }
