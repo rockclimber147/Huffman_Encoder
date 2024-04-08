@@ -24,10 +24,6 @@ Node * getHuffmanTreeFromFile (char *filename) {
     printf("The priority Queue generated is:\n");
     printQueue(head);
 
-    //TODO debug print
-    printf("\nwhich has size %d\n", nodeCount(head));
-    //// end debug print
-
     Node *huffmanTree = createHuffmanTree(&head);
 
     freeQueue(head);
@@ -38,7 +34,7 @@ Node * getHuffmanTreeFromFile (char *filename) {
 char **getCodeTableFromTree(Node *root) {
     char **codeTable = initializeCodeTable();
     getCodeWords(codeTable, root);
-    printf("The codewords are:\n");
+    printf("\n\nThe codewords are:\n");
     printCodeWords(codeTable);
     return codeTable;
 }

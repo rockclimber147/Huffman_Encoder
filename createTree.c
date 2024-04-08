@@ -21,11 +21,6 @@ Node* createHuffmanTree(QueueNode** head) {
         // Enqueue the new node back into the priority queue
         QueueNode* newQueueNode = createQueueNode(newNode, node1->priority + node2->priority);
 
-        //TODO debug print
-        printf("In createHuffmanTree:\n");
-        printQueueNode(newQueueNode);
-        printf("\n");
-
         *head = enqueue(*head, newQueueNode);
 
         // Free memory for the dequeued nodes
@@ -37,15 +32,9 @@ Node* createHuffmanTree(QueueNode** head) {
     if (*head != NULL) {
         Node* huffmanRoot = (*head)->root;
 
-        //TODO debug print
-        printf("\nprinting completed tree:\n");
-
         printTree(huffmanRoot);
         return huffmanRoot;
     }
-
-    //TODO debug print
-    printf("OH NO! (returning NULL root from createHuffmanTree)\n");
 
     return NULL; // If the queue is empty
 }

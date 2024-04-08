@@ -12,7 +12,7 @@ void getCodeWords(char **codewords, Node *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 char **initializeCodeTable();
 void freeCodetable(char **codeTable);
-void *getCharacterFrequenciesFromFile(char *filename, int *charFrequencyTable);
+void getCharacterFrequenciesFromFile(char *filename, int *charFrequencyTable);
 int LOOKUP_TESTS();
 
 /**
@@ -20,7 +20,7 @@ int LOOKUP_TESTS();
  * @param filename The name of the file to read from
  * @return The completed character frequency table
  */
-void *getCharacterFrequenciesFromFile(char *filename, int *charFrequencyTable) {
+void getCharacterFrequenciesFromFile(char *filename, int *charFrequencyTable) {
     FILE *input;
 
     input = fopen("LookupTest.txt", "r");
