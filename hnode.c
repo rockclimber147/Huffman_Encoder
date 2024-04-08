@@ -61,6 +61,10 @@ int isLeaf(Node *node) {
     return (node -> left == NULL && node -> right == NULL);
 }
 
+/**
+ * Recursively prints the structure of the tree
+ * @param root The root of the tree
+ */
 void printTree(Node *root) {
     if (!root) {
         printf("_");

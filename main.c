@@ -98,12 +98,6 @@ void compress(char* string) {
 }
 
     int main() {
-//    PRIORITY_QUEUE_PRINT_TEST();
-//    LOOKUP_TESTS();
-//    PRIORITY_QUEUE_TEST_ALICE();
-//    CREATE_TREE_ALEX_TEST();
-//    TEST_freeTree();
-//    TEST_printTree();
         Node *root = getHuffmanTreeFromFile("LookupTest.txt");
         char **codeTable = getCodeTableFromTree(root);
         char *compressedString = encode("LookupTest.txt", codeTable);
@@ -112,6 +106,6 @@ void compress(char* string) {
             compress(compressedString);
             free(compressedString);
         }
-
+        freeTree(root);
         return 0;
     }
