@@ -146,7 +146,6 @@ void printQueue(QueueNode *head) {
         printQueueNode(head);
         printQueue(head->next);
     }
-    printf("\n");
 }
 
 //int main() {

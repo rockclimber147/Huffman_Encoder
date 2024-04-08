@@ -23,6 +23,11 @@ Node * getHuffmanTreeFromFile (char *filename) {
     QueueNode *head = generatePriorityQueue(charFrequencies);
     printf("The priority Queue generated is:\n");
     printQueue(head);
+
+    //TODO debug print
+    printf("\nwhich has size %d\n", nodeCount(head));
+    //// end debug print
+
     Node *huffmanTree = createHuffmanTree(&head);
 
     freeQueue(head);

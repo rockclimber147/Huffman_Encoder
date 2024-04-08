@@ -1,6 +1,7 @@
 //
 // Created by alexp on 4/5/2024.
 //
+#include <stdio.h>
 #include <stdlib.h>
 #include "hnode.h"
 #include "priorityQueue.h"
@@ -18,22 +19,31 @@ Node* createHuffmanTree(QueueNode** head) {
         newNode->right = node2->root;
 
         // Enqueue the new node back into the priority queue
-        QueueNode* newQueueNode = (QueueNode*)malloc(sizeof(QueueNode));
-        newQueueNode->root = newNode;
-        newQueueNode->priority = node1->priority + node2->priority;
-        newQueueNode->next = NULL;
+        QueueNode* newQueueNode = createQueueNode(newNode, node1->priority + node2->priority);
+        printf("In createHuffmanTree:\n");
+        printQueueNode(newQueueNode);
+        printf("\n");
+
         enqueue(*head, newQueueNode);
 
         // Free memory for the dequeued nodes
-        freeQueue(node1);
-        freeQueue(node2);
+        free(node1);
+        free(node2);
     }
 
     // The last queueNode in priority queue is the root node of Huffman Tree
     if (*head != NULL) {
         Node* huffmanRoot = (*head)->root;
+
+        //TODO debug print
+        printf("\nprinting completed tree:\n");
+
+        printTree(huffmanRoot);
         return huffmanRoot;
     }
+
+    //TODO debug print
+    printf("OH NO! (returning NULL root from createHuffmanTree)\n");
 
     return NULL; // If the queue is empty
 }
