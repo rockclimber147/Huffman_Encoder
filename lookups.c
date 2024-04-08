@@ -30,7 +30,7 @@ int *getCharacterFrequenciesFromFile(char *filename) {
         return NULL;
     }
 
-    int *characterFrequencies = malloc(sizeof(int) * MAX_PRINTABLE_CHARACTERS);
+    int *characterFrequencies = malloc(sizeof(int) * (MAX_PRINTABLE_CHARACTERS + 1));
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
         characterFrequencies[i] = 0;
     }
