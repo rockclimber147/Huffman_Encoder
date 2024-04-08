@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "lookups.h"
 #include "hnode.h"
 #include "priorityQueue.h"
@@ -74,27 +75,47 @@ void compress(char* string) {
         printf("Error: Unable to create file.\n");
         return;
     }
+    char byte[8];
+    int count = 0;
 
     //TODO: write the string of binary digits to file
+    for (int i = 0; i < strlen(string); i++) {
+        if (count < 8) {
+            byte[count] = string[i];
+            count++;
+        } else {
+            char c = strtol(byte, (char **) NULL, 2);
+            fputc(c, file);
+            count = 0;
+            byte[count] = string[i];
+            count++;
+        }
+    }
 
+    while (count < 8) {
+        byte[count] = '0';
+        count++;
+    }
+    char c = strtol(byte, (char **) NULL, 2);
+    fputc(c, file);
     fclose(file);
 }
 
-int main() {
+    int main() {
 //    PRIORITY_QUEUE_PRINT_TEST();
 //    LOOKUP_TESTS();
 //    PRIORITY_QUEUE_TEST_ALICE();
 //    CREATE_TREE_ALEX_TEST();
 //    TEST_freeTree();
 //    TEST_printTree();
-    Node *root = getHuffmanTreeFromFile("LookupTest.txt");
-    char **codeTable = getCodeTableFromTree(root);
-    char* compressedString = encode("LookupTest.txt", codeTable);
-    if (compressedString != NULL) {
-        printf("Compressed string: %s\n", compressedString);
-        compress(compressedString);
-        free(compressedString);
-    }
+        Node *root = getHuffmanTreeFromFile("LookupTest.txt");
+        char **codeTable = getCodeTableFromTree(root);
+        char *compressedString = encode("LookupTest.txt", codeTable);
+        if (compressedString != NULL) {
+            printf("Compressed string: %s\n", compressedString);
+            compress(compressedString);
+            free(compressedString);
+        }
 
-    return 0;
-}
+        return 0;
+    }
