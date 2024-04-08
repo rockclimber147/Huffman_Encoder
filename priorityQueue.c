@@ -5,7 +5,7 @@
 
 typedef struct QueueNode QueueNode;
 struct QueueNode {
-    Node *root;
+    TreeNode *root;
     int priority;
     struct QueueNode *next;
 };
@@ -23,7 +23,7 @@ QueueNode *createDefaultQueueNode() {
     return queueNode;
 }
 
-QueueNode *createQueueNode(Node *node, int priority) {
+QueueNode *createQueueNode(TreeNode *node, int priority) {
     QueueNode *queueNode = (QueueNode *) malloc(sizeof (QueueNode));
     queueNode->root = node;
     queueNode->priority=priority;

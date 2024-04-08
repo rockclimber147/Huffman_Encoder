@@ -7,19 +7,19 @@
 
 int PRIORITY_QUEUE_PRINT_TEST() {
     QueueNode *p1 = createDefaultQueueNode();
-    Node *p1root = createNode();
+    TreeNode *p1root = createNode();
     p1->root = p1root;
     p1root->character = 'A';
     p1->priority = 1;
 
     QueueNode *p2 = createDefaultQueueNode();
-    Node *p2root = createNode();
+    TreeNode *p2root = createNode();
     p2->root = p2root;
     p2root->character = 'B';
     p2->priority = 2;
 
     QueueNode *p3 = createDefaultQueueNode();
-    Node *p3root = createNode();
+    TreeNode *p3root = createNode();
     p3->root = p3root;
     p3root->character = 'C';
     p3->priority = 2;
@@ -47,30 +47,30 @@ int LOOKUP_TESTS() {
 
     printCharacterFrequencies(frequencies);
 
-    Node *A = createNode();
+    TreeNode *A = createNode();
     A->character = 'A';
-    Node *B = createNode();
+    TreeNode *B = createNode();
     B->character = 'B';
-    Node *C = createNode();
+    TreeNode *C = createNode();
     C->character = 'C';
-    Node  *D = createNode();
+    TreeNode  *D = createNode();
     D->character = 'D';
-    Node *E = createNode();
+    TreeNode *E = createNode();
     E->character = 'E';
 
-    Node *AB = createNode();
+    TreeNode *AB = createNode();
     AB->left = A;
     AB->right = B;
-    Node *ABC = createNode();
+    TreeNode *ABC = createNode();
     ABC->left = AB;
     ABC->right = C;
-    Node *DE = createNode();
+    TreeNode *DE = createNode();
     DE->left = D;
     DE->right = E;
-    Node *ABCDE = createNode();
+    TreeNode *ABCDE = createNode();
     ABCDE->left = ABC;
     ABCDE ->right = DE;
-    Node *root = ABCDE;
+    TreeNode *root = ABCDE;
 
     char **codewords = malloc(sizeof(char*) * MAX_PRINTABLE_CHARACTERS);
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
@@ -85,11 +85,11 @@ int LOOKUP_TESTS() {
 }
 
 int PRIORITY_QUEUE_TEST_ALICE() {
-    Node *A = createNode();
+    TreeNode *A = createNode();
     A->character = 'A';
-    Node *B = createNode();
+    TreeNode *B = createNode();
     B->character = 'B';
-    Node *C = createNode();
+    TreeNode *C = createNode();
     C->character = 'C';
 
     QueueNode *Aqn = createQueueNode(A, 3);
@@ -109,11 +109,11 @@ int PRIORITY_QUEUE_TEST_ALICE() {
 }
 
 void TEST_freeTree() {
-    Node *A = createNode();
+    TreeNode *A = createNode();
     A->character = 'A';
-    Node *B = createNode();
+    TreeNode *B = createNode();
     A->character = 'B';
-    Node *C = createNode();
+    TreeNode *C = createNode();
     A->character = 'C';
     A->right = B;
     B->right = C;
@@ -121,11 +121,11 @@ void TEST_freeTree() {
 }
 
 void TEST_printTree(){
-    Node *A = createNode();
+    TreeNode *A = createNode();
     A->character = 'A';
-    Node *B = createNode();
+    TreeNode *B = createNode();
     B->character = 'B';
-    Node *C = createNode();
+    TreeNode *C = createNode();
     C->character = 'C';
     A->right = B;
     B->right = C;

@@ -7,14 +7,14 @@
 #include "priorityQueue.h"
 #include "lookups.h"
 
-Node* createHuffmanTree(QueueNode** head) {
+TreeNode* createHuffmanTree(QueueNode** head) {
     while (nodeCount(*head) > 1) {
         // Dequeue two nodes with the lowest frequencies
         QueueNode* node1 = dequeue(head);
         QueueNode* node2 = dequeue(head);
 
         // Create a new internal node with node1 and node2 as children
-        Node* newNode = createNode();
+        TreeNode* newNode = createNode();
         newNode->left = node1->root;
         newNode->right = node2->root;
 
@@ -30,7 +30,7 @@ Node* createHuffmanTree(QueueNode** head) {
 
     // The last queueNode in priority queue is the root node of Huffman Tree
     if (*head != NULL) {
-        Node* huffmanRoot = (*head)->root;
+        TreeNode* huffmanRoot = (*head)->root;
 
         printTree(huffmanRoot);
         return huffmanRoot;
@@ -49,7 +49,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
         if (frequencyTable[i] != 0) {
             // Creating a new tree node for the character
-            Node *newRoot = createNode();
+            TreeNode *newRoot = createNode();
             newRoot->character = (char) i;
 
             // Creating a new queue node

@@ -11,7 +11,7 @@
 
 
 
-Node * getHuffmanTreeFromFile (char *filename) {
+TreeNode * getHuffmanTreeFromFile (char *filename) {
     int charFrequencyTable[MAX_PRINTABLE_CHARACTERS];
     getCharacterFrequenciesFromFile(filename, charFrequencyTable);
 
@@ -24,14 +24,14 @@ Node * getHuffmanTreeFromFile (char *filename) {
     printf("The priority Queue generated is:\n");
     printQueue(head);
 
-    Node *huffmanTree = createHuffmanTree(&head);
+    TreeNode *huffmanTree = createHuffmanTree(&head);
 
     freeQueue(head);
 
     return huffmanTree;
 }
 
-char **getCodeTableFromTree(Node *root) {
+char **getCodeTableFromTree(TreeNode *root) {
     char **codeTable = initializeCodeTable();
     getCodeWords(codeTable, root);
     printf("\n\nThe codewords are:\n");
@@ -98,7 +98,7 @@ void compress(char* string) {
 }
 
     int main() {
-        Node *root = getHuffmanTreeFromFile("LookupTest.txt");
+        TreeNode *root = getHuffmanTreeFromFile("LookupTest.txt");
         char **codeTable = getCodeTableFromTree(root);
         char *compressedString = encode("LookupTest.txt", codeTable);
         if (compressedString != NULL) {

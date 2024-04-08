@@ -7,12 +7,12 @@
 #include "hnode.h"
 typedef struct QueueNode QueueNode;
 struct QueueNode {
-    Node *root;
+    TreeNode *root;
     int priority;
     struct QueueNode *next;
     struct QueueNode *prev;
 };
-QueueNode *createQueueNode(Node *node, int priority);
+QueueNode *createQueueNode(TreeNode *node, int priority);
 QueueNode *createDefaultQueueNode();
 QueueNode * enqueue(QueueNode *head, QueueNode *val);
 QueueNode * dequeue(QueueNode **head);

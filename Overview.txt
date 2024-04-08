@@ -1,16 +1,24 @@
 WHAT THIS PROJECT DOES, STEP BY STEP
 
-1. Get the character frequencies from a file (lookups.c)
-2. With those frequencies, encapsulate the character in a TreeNode and put that in a QueueNode along with the frequency
+1. (lookups.c -> getCharFrequenciesFromFile) Get the character frequencies from a file
+
+2. (createTree.c -> generatePriorityQueue) With those frequencies, encapsulate the character in a TreeNode and put
+    that in a QueueNode along with the frequency
     2a. Enqueue the node
     2b. repeat for all the characters with nonzero frequencies
-3. while the Queue has a length > 1:
+
+3. (createTree.c -> createHuffmanTree) while the Queue has a length > 1:
     deQueue into left
     deQueue into right
     make a new QueueNode with:
         a new Tree with left = root node from left, right = root node from right
         sum of left and right priorities
     enQueue the new node
+
 4. Grab the complete tree from the final QueueNode
-5. generate the codetable from the tree
-6. use the input file characters to write the code words to a new file
+
+5. allocate memory for codeword table (char mapped array with string pointers)
+
+6. (lookups.c -> getCodeWords) generate the codetable from the tree
+
+7. use the input file characters to write the code words to a new file

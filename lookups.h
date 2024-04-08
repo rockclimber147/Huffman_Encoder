@@ -11,8 +11,8 @@
 
 int* getCharacterFrequencies(const char *text);
 void printCharacterFrequencies(int *characterFrequencies);
-void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root, char *currentString, int charsNeeded);
-void getCodeWords(char **codewords, Node *root);
+void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], TreeNode *root, char *currentString, int charsNeeded);
+void getCodeWords(char **codewords, TreeNode *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 char **initializeCodeTable();
 void freeCodetable(char **codeTable);

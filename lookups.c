@@ -7,8 +7,8 @@
 
 int* getCharacterFrequencies(const char *text);
 void printCharacterFrequencies(int *characterFrequencies);
-void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root, char *currentString, int charsNeeded);
-void getCodeWords(char **codewords, Node *root);
+void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], TreeNode *root, char *currentString, int charsNeeded);
+void getCodeWords(char **codewords, TreeNode *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 char **initializeCodeTable();
 void freeCodetable(char **codeTable);
@@ -104,7 +104,7 @@ void freeCodetable(char **codeTable) {
  * @param currentString the current codeword
  * @param charsNeeded The maximum size of a codeword string
  */
-void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root, char *currentString, int charsNeeded) {
+void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], TreeNode *root, char *currentString, int charsNeeded) {
     // Base case, leaf has no children so write the code string to the table.
     if (isLeaf(root)) {
         // allocate memory for the code string
@@ -139,7 +139,7 @@ void getCodeWordsRecursive(char *codewords[MAX_PRINTABLE_CHARACTERS], Node *root
  * @param codewords An empty codewords table
  * @param root The root of the Huffman Tree
  */
-void getCodeWords(char **codewords, Node *root) {
+void getCodeWords(char **codewords, TreeNode *root) {
     // codewords get longer the deeper in the tree so the max characters needed is the depth + 1 for the null character
     int maxCharsNeeded = height(root) + 1;
 

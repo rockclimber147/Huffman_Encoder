@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node Node;
-struct Node {
+typedef struct TreeNode TreeNode;
+struct TreeNode {
     char character;
-    Node *left;
-    Node *right;
+    TreeNode *left;
+    TreeNode *right;
 };
 
-Node *createNode();
-int height(Node *root);
-void freeTree(Node *root);
+TreeNode *createNode();
+int height(TreeNode *root);
+void freeTree(TreeNode *root);
 
 /**
- * Allocates and returns a default Node
- * @return Pointer to the new Node
+ * Allocates and returns a default TreeNode
+ * @return Pointer to the new TreeNode
  */
-Node *createNode() {
-    Node *node = (Node *) malloc(sizeof(Node));
+TreeNode *createNode() {
+    TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
     node->character = 127; // MAX value for character
     node->left = NULL;
     node->right = NULL;
@@ -26,10 +26,10 @@ Node *createNode() {
 
 /**
  * Recursively determines the height of the tree
- * @param root Pointer to the root Node
+ * @param root Pointer to the root TreeNode
  * @return The height of the tree
  */
-int height(Node *root) {
+int height(TreeNode *root) {
     if (root == NULL) {
         return -1;
     }
@@ -42,7 +42,7 @@ int height(Node *root) {
  * Recursively frees all memory allocated to nodes in a tree
  * @param root The root of the tree
  */
-void freeTree(Node *root) {
+void freeTree(TreeNode *root) {
     if (root->left != NULL) {
         freeTree(root -> left);
     }
@@ -53,11 +53,11 @@ void freeTree(Node *root) {
 }
 
 /**
- * Returns true if the Node has no children
+ * Returns true if the TreeNode has no children
  * @param node The node to check
  * @return whether the node is a leaf or not as a boolean
  */
-int isLeaf(Node *node) {
+int isLeaf(TreeNode *node) {
     return (node -> left == NULL && node -> right == NULL);
 }
 
@@ -65,7 +65,7 @@ int isLeaf(Node *node) {
  * Recursively prints the structure of the tree
  * @param root The root of the tree
  */
-void printTree(Node *root) {
+void printTree(TreeNode *root) {
     if (!root) {
         printf("_");
         return;

@@ -5,18 +5,18 @@
 #ifndef HUFFMAN_ENCODER_HNODE_H
 #define HUFFMAN_ENCODER_HNODE_H
 
-typedef struct Node Node;
-struct Node {
+typedef struct TreeNode TreeNode;
+struct TreeNode {
     char character;
-    Node *left;
-    Node *right;
+    TreeNode *left;
+    TreeNode *right;
 };
 
-Node *createNode();
-int height(Node *root);
-void freeTree(Node *root);
-int isLeaf(Node *node);
-void printTree(Node *root);
+TreeNode *createNode();
+int height(TreeNode *root);
+void freeTree(TreeNode *root);
+int isLeaf(TreeNode *node);
+void printTree(TreeNode *root);
 
 
 #endif //HUFFMAN_ENCODER_HNODE_H
