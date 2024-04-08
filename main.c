@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lookups.h"
 #include "hnode.h"
 #include "priorityQueue.h"
@@ -41,6 +42,44 @@ char **getCodeTableFromTree(Node *root) {
     return codeTable;
 }
 
+//reads from file and converts content to a string containing all encoded binary digits
+char* encode(char* filename, char** codeTable) {
+    FILE *input = fopen(filename, "r");
+    char character;
+
+    if (input == NULL){
+        printf("Couldn't open file");
+        return NULL;
+    }
+
+    char* encodedString = (char *)malloc(MAX_PRINTABLE_CHARACTERS*sizeof (char));
+
+    while ((character = fgetc(input)) != EOF) {
+        encodedString = (char *)realloc(encodedString, strlen(codeTable[(int) character]) * sizeof(char));
+        if (encodedString == NULL) {
+            printf("Memory reallocation failed.\n");
+            fclose(input);
+            return NULL;
+        }
+        strcat(encodedString, codeTable[(int) character]);
+        printf("%s\n", encodedString);
+    }
+    fclose(input);
+    return encodedString;
+}
+
+void compress(char* string) {
+    FILE *file = fopen("output.txt", "w");
+    if (!file) {
+        printf("Error: Unable to create file.\n");
+        return;
+    }
+
+    //TODO: write the string of binary digits to file
+
+    fclose(file);
+}
+
 int main() {
 //    PRIORITY_QUEUE_PRINT_TEST();
 //    LOOKUP_TESTS();
@@ -50,6 +89,12 @@ int main() {
 //    TEST_printTree();
     Node *root = getHuffmanTreeFromFile("LookupTest.txt");
     char **codeTable = getCodeTableFromTree(root);
+    char* compressedString = encode("LookupTest.txt", codeTable);
+    if (compressedString != NULL) {
+        printf("Compressed string: %s\n", compressedString);
+        compress(compressedString);
+        free(compressedString);
+    }
 
     return 0;
 }
