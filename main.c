@@ -10,21 +10,17 @@
 
 
 Node * getHuffmanTreeFromFile (char *filename) {
-    int *charFrequencies = getCharacterFrequenciesFromFile(filename);
-    if (!charFrequencies) {
-        printf("Couldn't get char frequencies\n");
-        return NULL;
-    }
+    int charFrequencyTable[MAX_PRINTABLE_CHARACTERS];
+    getCharacterFrequenciesFromFile(filename, charFrequencyTable);
+
 
     printf("The character counts for %s are:\n", filename);
-    printCharacterFrequencies(charFrequencies);
+    printCharacterFrequencies(charFrequencyTable);
     printf("\n");
 
-    QueueNode *head = generatePriorityQueue(charFrequencies);
+    QueueNode *head = generatePriorityQueue(charFrequencyTable);
     printf("The priority Queue generated is:\n");
     printQueue(head);
-
-    free(charFrequencies);
 
     //TODO debug print
     printf("\nwhich has size %d\n", nodeCount(head));

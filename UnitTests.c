@@ -46,13 +46,10 @@ int PRIORITY_QUEUE_PRINT_TEST() {
  */
 int LOOKUP_TESTS() {
 
-    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
-    if (frequencies == NULL) {
-        return 1;
-    }
+    int frequencies[MAX_PRINTABLE_CHARACTERS];
+    getCharacterFrequenciesFromFile("LookupTest.txt", frequencies);
 
     printCharacterFrequencies(frequencies);
-    free(frequencies);
 
     Node *A = createNode();
     A->character = 'A';
@@ -115,19 +112,6 @@ int PRIORITY_QUEUE_TEST_ALICE() {
     return 0;
 }
 
-int CREATE_TREE_ALEX_TEST() {
-    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
-    if (frequencies == NULL) {
-        return 1;
-    }
-
-    printCharacterFrequencies(frequencies);
-
-    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
-    printQueue(priorityQueue);
-    free(frequencies);
-    return 0;
-}
 
 ////////////////////////////////// THE FOLLOWING IS FOR TESTING ALEX'S CODE:
 
