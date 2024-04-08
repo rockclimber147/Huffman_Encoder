@@ -20,6 +20,8 @@ Node* createHuffmanTree(QueueNode** head) {
 
         // Enqueue the new node back into the priority queue
         QueueNode* newQueueNode = createQueueNode(newNode, node1->priority + node2->priority);
+
+        //TODO debug print
         printf("In createHuffmanTree:\n");
         printQueueNode(newQueueNode);
         printf("\n");
