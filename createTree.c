@@ -26,7 +26,7 @@ Node* createHuffmanTree(QueueNode** head) {
         printQueueNode(newQueueNode);
         printf("\n");
 
-        enqueue(*head, newQueueNode);
+        *head = enqueue(*head, newQueueNode);
 
         // Free memory for the dequeued nodes
         free(node1);
