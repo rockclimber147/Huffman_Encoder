@@ -61,3 +61,14 @@ int isLeaf(Node *node) {
     return (node -> left == NULL && node -> right == NULL);
 }
 
+void printTree(Node *root) {
+    if (!root) {
+        printf("_");
+        return;
+    }
+    printf("{");
+    printTree(root->left);
+    printf("|%c|", root->character);
+    printTree(root->right);
+    printf("}");
+}

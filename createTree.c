@@ -1,13 +1,14 @@
 //
 // Created by alexp on 4/5/2024.
 //
+#include <stdio.h>
 #include <stdlib.h>
 #include "hnode.h"
 #include "priorityQueue.h"
 #include "lookups.h"
 
 Node* createHuffmanTree(QueueNode** head) {
-    while (*head != NULL && (*head)->next->next != NULL) {
+    while (nodeCount(*head) > 1) {
         // Dequeue two nodes with the lowest frequencies
         QueueNode* node1 = dequeue(head);
         QueueNode* node2 = dequeue(head);
@@ -18,22 +19,33 @@ Node* createHuffmanTree(QueueNode** head) {
         newNode->right = node2->root;
 
         // Enqueue the new node back into the priority queue
-        QueueNode* newQueueNode = (QueueNode*)malloc(sizeof(QueueNode));
-        newQueueNode->root = newNode;
-        newQueueNode->priority = node1->priority + node2->priority;
-        newQueueNode->next = NULL;
-        enqueue(head, newQueueNode);
+        QueueNode* newQueueNode = createQueueNode(newNode, node1->priority + node2->priority);
+
+        //TODO debug print
+        printf("In createHuffmanTree:\n");
+        printQueueNode(newQueueNode);
+        printf("\n");
+
+        *head = enqueue(*head, newQueueNode);
 
         // Free memory for the dequeued nodes
-        freeQueue(node1);
-        freeQueue(node2);
+        free(node1);
+        free(node2);
     }
 
     // The last queueNode in priority queue is the root node of Huffman Tree
     if (*head != NULL) {
         Node* huffmanRoot = (*head)->root;
+
+        //TODO debug print
+        printf("\nprinting completed tree:\n");
+
+        printTree(huffmanRoot);
         return huffmanRoot;
     }
+
+    //TODO debug print
+    printf("OH NO! (returning NULL root from createHuffmanTree)\n");
 
     return NULL; // If the queue is empty
 }
@@ -49,7 +61,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
         if (frequencyTable[i] != 0) {
             // Creating a new tree node for the character
             Node *newRoot = createNode();
-            newRoot->character = i;
+            newRoot->character = (char) i;
 
             // Creating a new queue node
             QueueNode *newQueueNode = createQueueNode(newRoot, frequencyTable[i]);
@@ -58,7 +70,7 @@ QueueNode *generatePriorityQueue(int *frequencyTable) {
             if (newPriorityQueue == NULL) {
                 newPriorityQueue = newQueueNode; // set newQueueNode as head if empty priority queue
             } else {
-                *newPriorityQueue = enqueue(&newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
+                newPriorityQueue = enqueue(newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
             }
         }
     }

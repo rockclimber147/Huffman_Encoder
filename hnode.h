@@ -16,4 +16,7 @@ Node *createNode();
 int height(Node *root);
 void freeTree(Node *root);
 int isLeaf(Node *node);
+void printTree(Node *root);
+
+
 #endif //HUFFMAN_ENCODER_HNODE_H

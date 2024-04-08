@@ -16,7 +16,7 @@ void getCodeWords(char **codewords, Node *root);
 void printCodeWords(char *codewords[MAX_PRINTABLE_CHARACTERS]);
 char **initializeCodeTable();
 void freeCodetable(char **codeTable);
-int* getCharacterFrequenciesFromFile(char *filename);
+void *getCharacterFrequenciesFromFile(char *filename, int *charFrequencyTable);
 int LOOKUP_TESTS();
 
 #endif //HUFFMAN_ENCODER_LOOKUPS_H

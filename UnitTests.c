@@ -46,13 +46,10 @@ int PRIORITY_QUEUE_PRINT_TEST() {
  */
 int LOOKUP_TESTS() {
 
-    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
-    if (frequencies == NULL) {
-        return 1;
-    }
+    int frequencies[MAX_PRINTABLE_CHARACTERS];
+    getCharacterFrequenciesFromFile("LookupTest.txt", frequencies);
 
     printCharacterFrequencies(frequencies);
-    free(frequencies);
 
     Node *A = createNode();
     A->character = 'A';
@@ -91,69 +88,117 @@ int LOOKUP_TESTS() {
     return 0;
 }
 
-//int PRIORITY_QUEUE_TEST_ALICE() {
-//    Node *A = createNode();
-//    A->character = 'A';
-//    Node *B = createNode();
-//    B->character = 'B';
-//    Node *C = createNode();
-//    C->character = 'C';
-//    Node *D = createNode();
-//    D->character = 'D';
-//    Node *E = createNode();
-//    E->character = 'E';
+int PRIORITY_QUEUE_TEST_ALICE() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    B->character = 'B';
+    Node *C = createNode();
+    C->character = 'C';
+
+    QueueNode *Aqn = createQueueNode(A, 3);
+    QueueNode *Bqn = createQueueNode(B, 2);
+    QueueNode *Cqn = createQueueNode(C, 1);
+
+    QueueNode *head = enqueue(Bqn, Aqn);
+    head = enqueue(head, Cqn);
+
+    while (head->next != NULL) {
+        printf("%c ->", head->root->character);
+        head = head->next;
+    }
+    printf("%c ->", head->root->character);
+
+    return 0;
+}
+
+
+////////////////////////////////// THE FOLLOWING IS FOR TESTING ALEX'S CODE:
+
+//Node* createHuffmanTree(QueueNode** head) {
+//    while (*head != NULL && (*head)->next->next != NULL) {
+//        // Dequeue two nodes with the lowest frequencies
+//        QueueNode* node1 = dequeue(head);
+//        QueueNode* node2 = dequeue(head);
 //
-//    Node *AA = createNode();
-//    AA->character = 'A';
+//        // Create a new internal node with node1 and node2 as children
+//        Node* newNode = createNode();
+//        newNode->left = node1->root;
+//        newNode->right = node2->root;
 //
-//    QueueNode *Aqn = createQueueNode(A, 1);
-//    QueueNode *AAqn = createQueueNode(AA, 1);
-//    QueueNode *Bqn = createQueueNode(B, 2);
-//    QueueNode *Cqn = createQueueNode(C, 1);
-//    QueueNode *Dqn = createQueueNode(D, 4);
-//    QueueNode *Eqn = createQueueNode(E, 5);
+//        // Enqueue the new node back into the priority queue
+//        QueueNode* newQueueNode = (QueueNode*)malloc(sizeof(QueueNode));
+//        newQueueNode->root = newNode;
+//        newQueueNode->priority = node1->priority + node2->priority;
+//        newQueueNode->next = NULL;
+//        enqueue(*head, newQueueNode);
 //
-//    QueueNode *head = createDefaultQueueNode();
-//    *head = enqueue(&Bqn, Aqn);
-//    *head = enqueue(&head, Dqn);
-//    *head = enqueue(&head, Cqn);
-////    *head = enqueue(&head, AAqn);
-////    *head = dequeue(&head);
-//
-////    while (head != NULL) {
-////        printQueueNode(head);
-////        *head = dequeue(&head);
-////    }
-//
-//    while (head->next != NULL) {
-//        printQueueNode(head);
-//        printf("%c", head->root->character);
-////        head = head->next;
-//        *head = dequeue(&head);
-//
+//        // Free memory for the dequeued nodes
+//        freeQueue(node1);
+//        freeQueue(node2);
 //    }
-//    printf("\n-------\n");
-//    QueueNode *test = createDefaultQueueNode();
-//    *test = dequeue(&head);
-//    printQueueNode(test);
-//    printf("%c", test->root->character);
-//    printf("\n-------\n");
-//    printQueueNode(head);
-//    printf("%c", head->root->character);
 //
-//    return 0;
+//    // The last queueNode in priority queue is the root node of Huffman Tree
+//    if (*head != NULL) {
+//        Node* huffmanRoot = (*head)->root;
+//        return huffmanRoot;
+//    }
+//
+//    return NULL; // If the queue is empty
 //}
 
-//int CREATE_TREE_ALEX_TEST() {
-//    int* frequencies = getCharacterFrequenciesFromFile("LookupTest.txt");
-//    if (frequencies == NULL) {
-//        return 1;
+/**
+ * Generates a priority queue from all nonzero characters and their frequencies in the input table
+ * @return a pointer to a priority queue
+ */
+//QueueNode *generatePriorityQueue(int *frequencyTable) {
+//    QueueNode *newPriorityQueue = NULL;
+//
+//    for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
+//        if (frequencyTable[i] != 0) {
+//            // Creating a new tree node for the character
+//            Node *newRoot = createNode();
+//            newRoot->character = (char) i;
+//
+//            // Creating a new queue node
+//            QueueNode *newQueueNode = createQueueNode(newRoot, frequencyTable[i]);
+//
+//            // Enqueue the new node into the priority queue
+//            if (newPriorityQueue == NULL) {
+//                newPriorityQueue = newQueueNode; // set newQueueNode as head if empty priority queue
+//            } else {
+//                newPriorityQueue = enqueue(newPriorityQueue, newQueueNode); // Enqueue in order of priority (frequency)
+//            }
+//        }
 //    }
-//
-//    printCharacterFrequencies(frequencies);
-//
-//    QueueNode *priorityQueue = generatePriorityQueue(frequencies);
-//    printQueueNode(priorityQueue);
-//    free(frequencies);
-//    return 0;
+//    return newPriorityQueue;
 //}
+
+void TEST_freeTree() {
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    A->character = 'B';
+    Node *C = createNode();
+    A->character = 'C';
+    A->right = B;
+    B->right = C;
+    freeTree(A);
+}
+
+void TEST_printTree(){
+    Node *A = createNode();
+    A->character = 'A';
+    Node *B = createNode();
+    B->character = 'B';
+    Node *C = createNode();
+    C->character = 'C';
+    A->right = B;
+    B->right = C;
+    printTree(A);
+    printf("\n");
+    printTree(B);
+    printf("\n");
+    printTree(C);
+    freeTree(A);
+}

@@ -8,6 +8,8 @@ add_executable(Huffman_Encoder hnode.c
         main.c
         lookups.h
         hnode.h
+        createTree.c
+        createTree.h
         priorityQueue.c
         priorityQueue.h
         UnitTests.c
