@@ -32,7 +32,7 @@ TreeNode* createHuffmanTree(QueueNode** head) {
     if (*head != NULL) {
         TreeNode* huffmanRoot = (*head)->root;
 
-        printTree(huffmanRoot);
+//        printTree(huffmanRoot);
         return huffmanRoot;
     }
 

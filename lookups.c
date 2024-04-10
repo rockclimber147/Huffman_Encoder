@@ -27,7 +27,7 @@ void getCharacterFrequenciesFromFile(char *filename, int *charFrequencyTable) {
 
     if (input == NULL){
         printf("Couldn't open file");
-        return NULL;
+        return;
     }
 
     for (int i = 0; i < MAX_PRINTABLE_CHARACTERS; i++) {
