@@ -27,7 +27,7 @@ TreeNode * getHuffmanTreeFromFrequencyTable (int *charFrequencyTable) {
 char **getCodeTableFromTree(TreeNode *root) {
     char **codeTable = initializeCodeTable();
     getCodeWords(codeTable, root);
-    printf("\n\nThe codewords are:\n");
+    printf("The codewords are:\n");
     printCodeWords(codeTable);
     return codeTable;
 }
@@ -140,6 +140,44 @@ int displayFileContentsWitsSizeInBits(char *fileName) {
     return totalChars;
 }
 
+void decodeToFile(char *codedFileName, char *outputFileName, TreeNode *root) {
+    FILE *codedFile;
+    FILE *decodedFile;
+
+    codedFile = fopen(codedFileName, "r");
+
+    if (codedFile == NULL){
+        printf("Couldn't open coded file");
+        return;
+    }
+    decodedFile = fopen(outputFileName, "w");
+
+    if (decodedFile == NULL){
+        printf("Couldn't open output file");
+        return;
+    }
+    TreeNode *current = root;
+    char currentChar = (char) fgetc(codedFile);
+    while (currentChar != EOF) {
+        if (currentChar == '0') {
+            current = current-> left;
+        } else if (currentChar == '1') {
+            current = current-> right;
+        } else {
+            printf("UNEXPECTED CHARACTER WHEN DECODING: %c\n", currentChar);
+        }
+
+        if (isLeaf(current)) {
+            fprintf(decodedFile, "%c", current->character);
+            current = root;
+        }
+
+        currentChar = (char) fgetc(codedFile);
+    }
+    fclose(codedFile);
+    fclose(decodedFile);
+}
+
 int main() {
     // specify file name
     char *filename = "LookupTest.txt";
@@ -173,10 +211,11 @@ int main() {
 
     outputFileSizeInBits = displayFileContentsWitsSizeInBits(outputFileName) - 1;
     printf("\nBits needed to encode: %d\n", outputFileSizeInBits);
-    printf("output file is %.2f%% smaller than input file",
+    printf("output file is %.2f%% smaller than input file\n",
            100 * (1 - ((float) outputFileSizeInBits) / ((float) fileSizeInBits)));
 
-
+    decodeToFile(outputFileName, decodedFileName, root);
+    displayFileContentsWitsSizeInBits(decodedFileName);
 
     freeTree(root);
     printf("\n");
