@@ -214,7 +214,9 @@ int main() {
     printf("output file is %.2f%% smaller than input file\n",
            100 * (1 - ((float) outputFileSizeInBits) / ((float) fileSizeInBits)));
 
+    printf("\nDecoding to %s\n", decodedFileName);
     decodeToFile(outputFileName, decodedFileName, root);
+    printf("\n");
     displayFileContentsWitsSizeInBits(decodedFileName);
 
     freeTree(root);
