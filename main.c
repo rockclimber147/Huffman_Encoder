@@ -218,6 +218,7 @@ int main() {
     displayFileContentsWitsSizeInBits(decodedFileName);
 
     freeTree(root);
+    freeCodetable(codeTable);
     printf("\n");
     return 0;
 }
