@@ -11,6 +11,7 @@
 
 #define OUTPUT_PREFIX "OUT_"
 #define DECODED_PREFIX "DEC_"
+#define PRINT_TEXT 0
 
 TreeNode * getHuffmanTreeFromFrequencyTable (int *charFrequencyTable) {
     QueueNode *head = generatePriorityQueue(charFrequencyTable);
@@ -30,65 +31,6 @@ char **getCodeTableFromTree(TreeNode *root) {
     printf("The codewords are:\n");
     printCodeWords(codeTable);
     return codeTable;
-}
-
-//reads from file and converts content to a string containing all encoded binary digits
-char* encode(char* filename, char** codeTable) {
-    FILE *input = fopen(filename, "r");
-    char character;
-
-    if (input == NULL){
-        printf("Couldn't open file");
-        return NULL;
-    }
-
-    char* encodedString = (char *)malloc(MAX_PRINTABLE_CHARACTERS*sizeof (char));
-
-    while ((character = fgetc(input)) != EOF) {
-        encodedString = (char *)realloc(encodedString, strlen(codeTable[(int) character]) * sizeof(char));
-        if (encodedString == NULL) {
-            printf("Memory reallocation failed.\n");
-            fclose(input);
-            return NULL;
-        }
-        strcat(encodedString, codeTable[(int) character]);
-        printf("%s\n", encodedString);
-    }
-    fclose(input);
-    return encodedString;
-}
-
-void compress(char* string) {
-    FILE *file = fopen("output.txt", "w");
-    if (!file) {
-        printf("Error: Unable to create file.\n");
-        return;
-    }
-    char byte[8];
-    int count = 0;
-
-    //TODO: write the string of binary digits to file
-    for (int i = 0; i < strlen(string); i++) {
-        if (count < 8) {
-            byte[count] = string[i];
-            count++;
-        } else {
-            char c = strtol(byte, (char **) NULL, 2);
-            fputc(c, file);
-            count = 0;
-            byte[count] = string[i];
-            count++;
-        }
-    }
-
-    while (count < 8) {
-        byte[count] = '0';
-        count++;
-    }
-
-    char c = strtol(byte, (char **) NULL, 2);
-    fputc(c, file);
-    fclose(file);
 }
 
 void writeCompressedString(char **codeTable, char *filename, char *outputFileName) {
@@ -118,7 +60,7 @@ void writeCompressedString(char **codeTable, char *filename, char *outputFileNam
     fclose(output);
 }
 
-int displayFileContentsWitsSizeInBits(char *fileName) {
+int getTextFileSizeInBits(char *fileName) {
     FILE *input;
     int totalChars = 0;
 
@@ -128,14 +70,11 @@ int displayFileContentsWitsSizeInBits(char *fileName) {
         printf("Couldn't open file");
         return -1;
     }
-    printf("Printing contents of %s:\n", fileName);
     char currentChar;
     do {
         currentChar = (char) fgetc(input);
-        printf("%c", currentChar);
         totalChars++;
     } while (currentChar != EOF);
-    printf("\n");
     fclose(input);
     return totalChars;
 }
@@ -186,7 +125,7 @@ int main() {
     char decodedFileName[100] = DECODED_PREFIX;
     strcat(decodedFileName, filename);
 
-    int fileSizeInBits = displayFileContentsWitsSizeInBits(filename) * 8;
+    int fileSizeInBits = getTextFileSizeInBits(filename) * 8;
     int outputFileSizeInBits;
     printf("\n%s takes uses %d bits at 8 bits per character\n\n", filename, fileSizeInBits);
 
@@ -209,7 +148,7 @@ int main() {
     // get size of compressed string
     writeCompressedString(codeTable, filename, outputFileName);
 
-    outputFileSizeInBits = displayFileContentsWitsSizeInBits(outputFileName) - 1;
+    outputFileSizeInBits = getTextFileSizeInBits(outputFileName) - 1;
     printf("\nBits needed to encode: %d\n", outputFileSizeInBits);
     printf("output file is %.2f%% smaller than input file\n",
            100 * (1 - ((float) outputFileSizeInBits) / ((float) fileSizeInBits)));
@@ -217,7 +156,7 @@ int main() {
     printf("\nDecoding to %s\n", decodedFileName);
     decodeToFile(outputFileName, decodedFileName, root);
     printf("\n");
-    displayFileContentsWitsSizeInBits(decodedFileName);
+    getTextFileSizeInBits(decodedFileName);
 
     freeTree(root);
     freeCodetable(codeTable);
