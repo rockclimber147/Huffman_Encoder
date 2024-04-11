@@ -8,6 +8,7 @@
 
 #define OUTPUT_PREFIX "OUT_"
 #define DECODED_PREFIX "DEC_"
+#define BITS_PER_CHARACTER 7
 
 TreeNode * getHuffmanTreeFromFrequencyTable (int *charFrequencyTable) {
     QueueNode *head = generatePriorityQueue(charFrequencyTable);
@@ -56,7 +57,7 @@ void writeCompressedString(char **codeTable, char *filename, char *outputFileNam
     fclose(output);
 }
 
-int getTextFileSizeInBits(char *fileName) {
+int displayFileContentsWitsSizeInBits(char *fileName) {
     FILE *input;
     int totalChars = 0;
 
@@ -71,6 +72,7 @@ int getTextFileSizeInBits(char *fileName) {
         currentChar = (char) fgetc(input);
         totalChars++;
     } while (currentChar != EOF);
+
     fclose(input);
     return totalChars;
 }
@@ -115,15 +117,15 @@ void decodeToFile(char *codedFileName, char *outputFileName, TreeNode *root) {
 
 int main() {
     // specify file name
-    char *filename = "Example.txt";
+    char *filename = "LookupTest.txt";
     char outputFileName[100] = OUTPUT_PREFIX;
     strcat(outputFileName, filename);
     char decodedFileName[100] = DECODED_PREFIX;
     strcat(decodedFileName, filename);
 
-    int fileSizeInBits = getTextFileSizeInBits(filename) * 8;
+    int fileSizeInBits = (displayFileContentsWitsSizeInBits(filename) - 1) * BITS_PER_CHARACTER;
     int outputFileSizeInBits;
-    printf("\n%s takes uses %d bits at 8 bits per character\n\n", filename, fileSizeInBits);
+    printf("\n%s takes uses %d bits at %d bits per character\n\n", filename, fileSizeInBits, BITS_PER_CHARACTER);
 
     // get char frequency table from file
     int charFrequencyTable[MAX_PRINTABLE_CHARACTERS];
@@ -144,7 +146,7 @@ int main() {
     // get size of compressed string
     writeCompressedString(codeTable, filename, outputFileName);
 
-    outputFileSizeInBits = getTextFileSizeInBits(outputFileName) - 1;
+    outputFileSizeInBits = displayFileContentsWitsSizeInBits(outputFileName) - 1;
     printf("\nBits needed to encode: %d\n", outputFileSizeInBits);
     printf("output file is %.2f%% smaller than input file\n",
            100 * (1 - ((float) outputFileSizeInBits) / ((float) fileSizeInBits)));
@@ -152,7 +154,7 @@ int main() {
     printf("\nDecoding to %s\n", decodedFileName);
     decodeToFile(outputFileName, decodedFileName, root);
     printf("\n");
-    getTextFileSizeInBits(decodedFileName);
+    displayFileContentsWitsSizeInBits(decodedFileName);
 
     freeTree(root);
     freeCodetable(codeTable);
