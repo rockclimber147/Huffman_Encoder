@@ -1,17 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 #include "lookups.h"
 #include "hnode.h"
 #include "priorityQueue.h"
 #include "createTree.h"
 #include "UnitTests.h"
-#include "createTree.h"
 
 #define OUTPUT_PREFIX "OUT_"
 #define DECODED_PREFIX "DEC_"
-#define PRINT_TEXT 0
 
 TreeNode * getHuffmanTreeFromFrequencyTable (int *charFrequencyTable) {
     QueueNode *head = generatePriorityQueue(charFrequencyTable);
