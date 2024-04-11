@@ -115,7 +115,7 @@ void decodeToFile(char *codedFileName, char *outputFileName, TreeNode *root) {
 
 int main() {
     // specify file name
-    char *filename = "LookupTest.txt";
+    char *filename = "Example.txt";
     char outputFileName[100] = OUTPUT_PREFIX;
     strcat(outputFileName, filename);
     char decodedFileName[100] = DECODED_PREFIX;
